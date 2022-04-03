@@ -25,6 +25,8 @@ export function logIn(email: string, password: string) {
     .then((response) => response.data);
 }
 
+// trip APIs
+
 export function fetchTrips() {
   return axios
     .get(`http://localhost:3000/trips`, {})
@@ -32,7 +34,7 @@ export function fetchTrips() {
 }
 
 // fetch trip by trip id
-export function fetchTrip(id: string) {
+export function fetchTrip(id: number) {
   return axios
     .get(`http://localhost:3000/trips/${id}`, {})
     .then((response) => response.data);
@@ -78,5 +80,19 @@ export function editTrip(
       location_id: location_id,
       transportation_id: transportation_id,
     })
+    .then((response) => response.data);
+}
+
+// locations routes
+
+export function fetchLocations() {
+  return axios
+    .get(`http://localhost:3000/locations`, {})
+    .then((response) => response.data);
+}
+
+export function fetchLocation(id: number) {
+  return axios
+    .get(`http://localhost:3000/locations/${id}`, {})
     .then((response) => response.data);
 }
