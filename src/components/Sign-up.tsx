@@ -53,7 +53,9 @@ export function SignUp() {
     } else if (password !== confirmPassword) {
       passwordNoMatchError();
     } else {
-      navigate("/home");
+        
+        navigate("/home");
+        
     }
   }
 

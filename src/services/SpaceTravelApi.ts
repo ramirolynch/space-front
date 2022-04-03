@@ -96,3 +96,114 @@ export function fetchLocation(id: number) {
     .get(`http://localhost:3000/locations/${id}`, {})
     .then((response) => response.data);
 }
+
+export function postLocation(
+  location_name: string,
+  distance: number,
+  unit_of_measure: string
+) {
+  return axios
+    .post(`http://localhost:3000/locations`, {
+      location_name: location_name,
+      distance: distance,
+      unit_of_measure: unit_of_measure,
+    })
+    .then((response) => response.data);
+}
+
+export function editLocation(
+  id: number,
+  location_name: string,
+  distance: number,
+  unit_of_measure: string
+) {
+  return axios
+    .put(`http://localhost:3000/locations/${id}`, {
+      location_name: location_name,
+      distance: distance,
+      unit_of_measure: unit_of_measure,
+    })
+    .then((response) => response.data);
+}
+
+export function deleteLocation(id: number) {
+  return axios
+    .delete(`http://localhost:3000/locations/${id}`)
+    .then((response) => response.data);
+}
+
+export function fetchTransportation() {
+  return axios
+    .get(`http://localhost:3000/transportation`, {})
+    .then((response) => response.data);
+}
+
+export function fetchTransport(id: number) {
+  return axios
+    .get(`http://localhost:3000/transportation/${id}`, {})
+    .then((response) => response.data);
+}
+
+export function postTransport(company_name: string, price: number) {
+  return axios
+    .post(`http://localhost:3000/transportation`, {
+      company_name: company_name,
+      price: price,
+    })
+    .then((response) => response.data);
+}
+
+export function editTransport(id: number, company_name: string, price: number) {
+  return axios
+    .put(`http://localhost:3000/transportation/${id}`, {
+      company_name: company_name,
+      price: price,
+    })
+    .then((response) => response.data);
+}
+
+export function deleteTransport(id: number) {
+  return axios
+    .delete(`http://localhost:3000/transportation/${id}`)
+    .then((response) => response.data);
+}
+
+export function fetchVaccines() {
+  return axios
+    .get(`http://localhost:3000/vaccines`, {})
+    .then((response) => response.data);
+}
+
+export function fetchVaccine(id: number) {
+  return axios
+    .get(`http://localhost:3000/vaccines/${id}`, {})
+    .then((response) => response.data);
+}
+
+export function postVaccine(vaccine_name: string, location_id: number) {
+  return axios
+    .post(`http://localhost:3000/vaccines`, {
+      vaccine_name: vaccine_name,
+      location_id: location_id,
+    })
+    .then((response) => response.data);
+}
+
+export function editVaccine(
+  id: number,
+  vaccine_name: string,
+  location_id: number
+) {
+  return axios
+    .put(`http://localhost:3000/vaccines/${id}`, {
+      vaccine_name: vaccine_name,
+      location_id: location_id,
+    })
+    .then((response) => response.data);
+}
+
+export function deleteVaccine(id: number) {
+  return axios
+    .delete(`http://localhost:3000/vaccines/${id}`)
+    .then((response) => response.data);
+}
