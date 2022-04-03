@@ -15,7 +15,7 @@ export function TripsBook() {
 
   let navigate = useNavigate();
   function backToMarsTripPage() {
-    navigate("/");
+    navigate("/getTripDetails");
   }
 
   return (
