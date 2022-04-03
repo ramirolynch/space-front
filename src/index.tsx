@@ -7,6 +7,7 @@ import { TripsBook } from "./components/Booktrip";
 import { LogIn } from "./components/Log-in";
 import { SignUp } from "./components/Sign-up";
 import { MarsTrip } from "./components/MarsTrip";
+import { SpaceContextProvider } from "./context/SpaceContextModel";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -14,6 +15,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
+    <SpaceContextProvider>
     <Router>
       <Routes>
         <Route path="/" element={<LogIn />}></Route>
@@ -22,7 +24,8 @@ root.render(
         <Route path="/signup" element={<SignUp />} />
         <Route path="/getTripDetails" element={<MarsTrip />} />
       </Routes>
-    </Router>
+      </Router>
+      </SpaceContextProvider>
   </React.StrictMode>
 );
 
