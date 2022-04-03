@@ -5,12 +5,19 @@ import { useNavigate } from "react-router-dom";
 
 export function TripsBook() {
   const [departure, setDeparture] = useState(new Date());
-  const [arrival, setArrival] = useState(new Date());
-
+  let [arrival, setArrival] = useState(new Date());
   function handleSubmit(e: any) {
     e.preventDefault();
     console.log("departure date", departure);
     console.log("arrival date", arrival);
+  }
+
+  function verifyArrival(e: any) {
+    setArrival(e);
+    if (e !== new Date() && e <= departure) {
+      alert("please select arrival date after departure date");
+    }
+    arrival = e;
   }
 
   let navigate = useNavigate();
@@ -37,7 +44,7 @@ export function TripsBook() {
             <i className="arrivalDate"> Arrival Date </i>
             <DatePicker
               className="arrival"
-              onChange={setArrival}
+              onChange={verifyArrival}
               value={arrival}
             />
           </div>
