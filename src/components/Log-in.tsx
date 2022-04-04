@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../LogInSignUp.css";
 import { toast } from "react-toastify";
-import {logIn} from '../services/SpaceTravelApi'
+import { logIn } from '../services/SpaceTravelApi';
 import { SpaceContext } from "../context/SpaceContext";
 
 export function LogIn() {

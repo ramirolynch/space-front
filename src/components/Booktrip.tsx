@@ -1,11 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DatePicker from "react-date-picker";
 import { FaArrowDown, FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { fetchTrips } from "../services/SpaceTravelApi";
+import { Trip } from "../models/TripModel";
+import { SingleTrip } from "./Trip";
 
 export function TripsBook() {
   const [departure, setDeparture] = useState(new Date());
   let [arrival, setArrival] = useState(new Date());
+  const [trips, setTrips] = useState<Trip[]>([])
+  
+  useEffect(()=>{
+    fetchTrips().then(data => setTrips(data));
+
+}, []);
+  
   function handleSubmit(e: any) {
     e.preventDefault();
     console.log("departure date", departure);
@@ -24,6 +34,7 @@ export function TripsBook() {
   function backToMarsTripPage() {
     navigate("/getTripDetails");
   }
+
 
   return (
     <div className="optionsDrop">
@@ -52,6 +63,7 @@ export function TripsBook() {
         {/* <FaArrowDown /> */}
         <div>{/* <button className="btn btn-success">Add Trip</button> */}</div>
       </form>
+      {trips.map((trip,i) => <SingleTrip key={i} trip={trip}/>)}
     </div>
   );
 }

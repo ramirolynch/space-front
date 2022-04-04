@@ -1,4 +1,5 @@
 import { ReactNode, useEffect, useState } from "react";
+import { Trip } from "../models/TripModel";
 import { User } from "../models/UserModel";
 import { SpaceContext } from "./SpaceContext";
 
@@ -11,6 +12,12 @@ export function SpaceContextProvider({ children }: Props) {
 
   const [users, setUsers] = useState<User[]>(() => {
     const saved = localStorage.getItem("userStorage") || "[]";
+    const initialValue = JSON.parse(saved);
+    return initialValue || [];
+  });
+
+  const [trips, setTrips] = useState<Trip[]>(() => {
+    const saved = localStorage.getItem("tripsStorage") || "[]";
     const initialValue = JSON.parse(saved);
     return initialValue || [];
   });
@@ -29,13 +36,21 @@ export function SpaceContextProvider({ children }: Props) {
   function addUser(user: User) {
     setUsers([...users, user]);
   }
+  function addTrip(trip: Trip) {
+    setTrips([...trips, trip]);
+  }
 
   function loginUser() {
     setLoggedUser(true);
   }
 
+  function logoutUser() {
+    setLoggedUser(false);
+  }
+
+
   return (
-    <SpaceContext.Provider value={{ users, addUser, loggedusers, loginUser }}>
+    <SpaceContext.Provider value={{ users, addUser, loggedusers, loginUser, logoutUser, addTrip, trips }}>
       {children}
     </SpaceContext.Provider>
   );
