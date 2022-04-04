@@ -78,7 +78,7 @@ export function SignUp() {
 
   return (
     <div className="loginContainer">
-      <form>
+      <form onSubmit={handleSubmit}>
               <h1>Sign Up</h1>
               <label>
           <p>First Name</p>
@@ -113,7 +113,7 @@ export function SignUp() {
           </Link>
         </div>
         <div>
-          <button className="button" type="submit" onClick={handleSubmit}>
+          <button className="button" type="submit">
             Submit
           </button>
         </div>
