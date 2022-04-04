@@ -16,9 +16,9 @@ export function SpaceContextProvider({ children }: Props) {
   });
 
   const [loggedusers, setLoggedUser] = useState<boolean>(() => {
-    const saved = localStorage.getItem("userLogin") || "";
-    const initialValue = JSON.parse(saved);
-    return initialValue || false;
+    const saved = localStorage.getItem("userLogin");
+    const initialValue = saved === "true" ? true : false;
+    return initialValue;
   });
 
   useEffect(() => {
