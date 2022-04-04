@@ -71,7 +71,7 @@ export function SignUp() {
         setEmail('')
         setPassword('')
 
-        navigate("/home");
+        navigate("/getTripDetails");
         
     }
   }
