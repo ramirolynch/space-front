@@ -9,14 +9,13 @@ import { SingleTrip } from "./Trip";
 export function TripsBook() {
   const [departure, setDeparture] = useState(new Date());
   let [arrival, setArrival] = useState(new Date());
-  
-  const [trips, setTrips] = useState<Trip[]>([])
-  
-  useEffect(()=>{
-    fetchTrips().then(data => setTrips(data));
 
-}, []);
-  
+  const [trips, setTrips] = useState<Trip[]>([]);
+
+  useEffect(() => {
+    fetchTrips().then((data) => setTrips(data));
+  }, []);
+
   function handleSubmit(e: any) {
     e.preventDefault();
     console.log("departure date", departure);
@@ -36,7 +35,6 @@ export function TripsBook() {
     navigate("/getTripDetails");
   }
 
-
   return (
     <div className="optionsDrop">
       <button className="leftArrow">
@@ -45,7 +43,7 @@ export function TripsBook() {
       <form onSubmit={handleSubmit}>
         <h3>
           <div className="departureHead">
-            <i className="departureDate"> Departure Date </i>
+            <i className="departureText"> Departure Date </i>
             <DatePicker
               className="departure"
               onChange={setDeparture}
@@ -53,7 +51,7 @@ export function TripsBook() {
             />
           </div>
           <div className="arrivalHead">
-            <i className="arrivalDate"> Arrival Date </i>
+            <i className="arrivalText"> Arrival Date </i>
             <DatePicker
               className="arrival"
               onChange={verifyArrival}
@@ -64,7 +62,9 @@ export function TripsBook() {
         {/* <FaArrowDown /> */}
         <div>{/* <button className="btn btn-success">Add Trip</button> */}</div>
       </form>
-      {trips.map((trip,i) => <SingleTrip key={i} trip={trip}/>)}
+      {trips.map((trip, i) => (
+        <SingleTrip key={i} trip={trip} />
+      ))}
     </div>
   );
 }
