@@ -23,7 +23,7 @@ export function MarsTrip() {
   }
 
   const Results = () => (
-    <div>
+    <div className="resultsDropdown">
       <SuitsPick></SuitsPick>
       <LocationPick></LocationPick>
       {/* <TripsBook></TripsBook> */}
@@ -40,14 +40,10 @@ export function MarsTrip() {
     <div className="marsHeader">
       <div className="marsTrip">
         <h1>Thinking About Going To Mars</h1>
-        {/* <button type="submit" value="Results" onClick={onClick}>
-          <h1 className="fabars">
-            <FaBars />
-          </h1>
-        </button> */}
       </div>
-      {/* {showResults ? <Results /> : null} */}
-      <Results />
+      <div className="results">
+        <Results />
+      </div>
     </div>
   );
 }
