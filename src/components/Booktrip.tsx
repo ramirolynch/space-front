@@ -27,31 +27,35 @@ export function TripsBook() {
 
   return (
     <div className="optionsDrop">
-      <button className="leftArrow">
-        <FaArrowLeft onClick={backToMarsTripPage}></FaArrowLeft>
-      </button>
-      <form onSubmit={handleSubmit}>
-        <h3>
-          <div className="departureHead">
-            <i className="departureDate"> Departure Date </i>
-            <DatePicker
-              className="departure"
-              onChange={setDeparture}
-              value={departure}
-            />
+      <div className="arrdate">
+        <button className="leftArrow">
+          <FaArrowLeft onClick={backToMarsTripPage}></FaArrowLeft>
+        </button>
+        <form onSubmit={handleSubmit}>
+          <h3>
+            <div className="departureHead">
+              <i className="departureText"> Departure Date </i>
+              <DatePicker
+                className="departure"
+                onChange={setDeparture}
+                value={departure}
+              />
+            </div>
+            <div className="arrivalHead">
+              <i className="arrivalText"> Arrival Date </i>
+              <DatePicker
+                className="arrival"
+                onChange={verifyArrival}
+                value={arrival}
+              />
+            </div>
+          </h3>
+          {/* <FaArrowDown /> */}
+          <div>
+            {/* <button className="btn btn-success">Add Trip</button> */}
           </div>
-          <div className="arrivalHead">
-            <i className="arrivalDate"> Arrival Date </i>
-            <DatePicker
-              className="arrival"
-              onChange={verifyArrival}
-              value={arrival}
-            />
-          </div>
-        </h3>
-        {/* <FaArrowDown /> */}
-        <div>{/* <button className="btn btn-success">Add Trip</button> */}</div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 }

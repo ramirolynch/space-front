@@ -16,17 +16,15 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <SpaceContextProvider>
-    <Router>
-      <Routes>
-        <Route path="/" element={<LogIn />}></Route>
-        <Route path="/showTrip" element={<TripsBook></TripsBook>}></Route>
-        <Route path="/login" element={<LogIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/getTripDetails" element={<MarsTrip />} />
-      </Routes>
+      <Router>
+        <Routes>
+          <Route path="/" element={<LogIn />}></Route>
+          <Route path="/showTrip" element={<TripsBook></TripsBook>}></Route>
+          <Route path="/login" element={<LogIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/getTripDetails" element={<MarsTrip />} />
+        </Routes>
       </Router>
-      </SpaceContextProvider>
+    </SpaceContextProvider>
   </React.StrictMode>
 );
-
-

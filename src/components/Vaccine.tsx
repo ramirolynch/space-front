@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export function Vaccine() {
   const [vaccine, setVaccine] = useState();
   const [vaccines] = React.useState([
-    { option: "Pick your location", value: "pick your location", id: 5 },
+    { option: "Pick your vaccine", value: "pick your location", id: 5 },
     { option: "Phobos Virus", value: "Phobos Virus", id: 1 },
     { option: "Deimos Virus", value: "Deimos Virus", id: 2 },
     { option: "Crimson Virus", value: "Crimson Virus", id: 3 },

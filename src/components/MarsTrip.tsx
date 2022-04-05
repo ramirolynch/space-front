@@ -9,13 +9,13 @@ import { useNavigate } from "react-router-dom";
 
 export function MarsTrip() {
   const [showResults, setShowResults] = useState(false);
-  const onClick = () => {
-    if (showResults) {
-      setShowResults(false);
-    } else {
-      setShowResults(true);
-    }
-  };
+  // const onClick = () => {
+  //   if (showResults) {
+  //     setShowResults(false);
+  //   } else {
+  //     setShowResults(true);
+  //   }
+  // };
 
   let navigate = useNavigate();
   function showTrip() {
@@ -23,7 +23,7 @@ export function MarsTrip() {
   }
 
   const Results = () => (
-    <div>
+    <div className="resultsDropdown">
       <SuitsPick></SuitsPick>
       <LocationPick></LocationPick>
       {/* <TripsBook></TripsBook> */}
@@ -38,15 +38,18 @@ export function MarsTrip() {
   );
   return (
     <div className="marsHeader">
-      <div className="marsTrip">
-        <h1>Thinking About Going To Mars</h1>
-        <button type="submit" value="Results" onClick={onClick}>
+      <div>
+        <h1 className="marsTrip">Thinking About Going To Mars</h1>
+      </div>
+      {/* <button type="submit" value="Results" onClick={onClick}>
           <h1 className="fabars">
             <FaBars />
           </h1>
-        </button>
+        </button> */}
+      <div className="results">
+        <Results />
       </div>
-      {showResults ? <Results /> : null}
+      {/* {showResults ? <Results /> : null} */}
     </div>
   );
 }
