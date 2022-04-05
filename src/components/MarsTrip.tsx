@@ -33,7 +33,7 @@ export function MarsTrip() {
         <button className="bookTrip" onClick={showTrip}>
           Book your trip
         </button>
-      </div>
+        </div>
     </div>
   );
   return (

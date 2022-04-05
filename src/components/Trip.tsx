@@ -17,8 +17,7 @@ export function SingleTrip({ trip }: Props) {
         <li>Transportation Company: {trip.company_name}</li>
         <li>Trip Price: {trip.price}</li>
         <li>Destination: {trip.location_name}</li>
-        <li>Distance: {trip.distance}</li>
-        <li>Unit of Measure: {trip.unit_of_measure}</li>
+        <li>Distance: {trip.distance} {trip.unit_of_measure}</li>
         <li>Space Suit Type: {trip.space_suit_name}</li>
       </ul>
     </div>

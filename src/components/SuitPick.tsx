@@ -11,13 +11,7 @@ export function SuitsPick() {
   }, []);
 
   const [suitsPick, setSuitsPick] = useState();
-  // const [suits] = React.useState([
-  //   { option: "Pick your suit", value: "Pick your suit", id: 1 },
-  //   { option: "Soft Suit", value: "Soft Suit", id: 2 },
-  //   { option: "Hardshell Suit", value: "Hardshell Suit", id: 3 },
-  //   { option: "Hybrid Suit", value: "Hybrid Suit", id: 4 },
-  //   { option: "Skintight Suit", value: "Skintight Suit", id: 5 },
-  // ]);
+
 
   function handleSubmit(e: any) {
     e.preventDefault();
