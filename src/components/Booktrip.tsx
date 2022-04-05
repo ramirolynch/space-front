@@ -9,6 +9,7 @@ import { SingleTrip } from "./Trip";
 export function TripsBook() {
   const [departure, setDeparture] = useState(new Date());
   let [arrival, setArrival] = useState(new Date());
+  
   const [trips, setTrips] = useState<Trip[]>([])
   
   useEffect(()=>{

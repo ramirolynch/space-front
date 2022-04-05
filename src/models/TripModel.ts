@@ -3,6 +3,10 @@ export interface Trip {
   departure_date: string;
   arrival_date: string;
   trip_time: string;
-  location_id: number;
-  transportation_id: number;
+  company_name: string;
+  price: number;
+  location_name: string;
+  distance: number;
+  unit_of_measure: string;
+  space_suit_name: string;
 }

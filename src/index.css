@@ -94,3 +94,9 @@ button.leftArrow {
   margin-left: 0;
   color: rgb(42, 174, 226);
 }
+
+.TripItem {
+  background: rgba(255, 255, 255, 0.8);
+
+  border-radius: 0.3em;
+}
