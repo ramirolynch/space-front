@@ -2,14 +2,14 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../LogInSignUp.css";
 import { toast } from "react-toastify";
-import { logIn } from '../services/SpaceTravelApi';
+import { logIn } from "../services/SpaceTravelApi";
 import { SpaceContext } from "../context/SpaceContext";
 
 export function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   let navigate = useNavigate();
-  const { loginUser } = useContext(SpaceContext)
+  const { loginUser } = useContext(SpaceContext);
 
   const loginError = () =>
     toast.error("Invalid email or password", {
@@ -29,15 +29,14 @@ export function LogIn() {
       loginError();
       return;
     } else {
-      let formData = new FormData(e.currentTarget)
+      let formData = new FormData(e.currentTarget);
 
-      let email: string = formData.get('email') as string;
-      let password: string = formData.get('password') as string;
+      let email: string = formData.get("email") as string;
+      let password: string = formData.get("password") as string;
 
       // checked for logged users
-      logIn(email, password).then(() => loginUser())
-      navigate("/getTripDetails")
-       
+      logIn(email, password).then(() => loginUser());
+      navigate("/getTripDetails");
     }
   }
 
@@ -48,13 +47,22 @@ export function LogIn() {
         <h2>Log In</h2>
         <label>
           <p>Email</p>
-          <input type="text"  name="email" id="email"  value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input
+            type="text"
+            name="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </label>
         <label>
           <p>Password</p>
           <input
             type="password"
-            name="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)}
+            name="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </label>
 
@@ -66,7 +74,7 @@ export function LogIn() {
         </div>
 
         <div>
-          <button className="button" type="submit">
+          <button className="submit" type="submit">
             Submit
           </button>
         </div>
