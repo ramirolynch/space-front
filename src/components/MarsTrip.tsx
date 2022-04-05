@@ -17,6 +17,13 @@ export function MarsTrip() {
   //   }
   // };
 
+  function handleSubmit(e: any) {
+
+  // search for available trips matching preferences
+  // we need to use suit_preferred, location_preferred, user_vaccine and transport_preferred which come from context
+    
+  }
+
   let navigate = useNavigate();
   function showTrip() {
     navigate("/showTrip");
@@ -24,7 +31,7 @@ export function MarsTrip() {
 
   const Results = () => (
     <div className="resultsDropdown">
-      <form>
+      <form onSubmit={handleSubmit}>
       <SuitsPick></SuitsPick>
       <LocationPick></LocationPick>
       {/* <TripsBook></TripsBook> */}

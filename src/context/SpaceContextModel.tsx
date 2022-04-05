@@ -57,9 +57,27 @@ export function SpaceContextProvider({ children }: Props) {
     setSuitPreferred(suit);
   }
 
+  const [location_preferred, setLocationPreferred] = useState<any>()
+
+  function addLocation(location:string) {
+    setLocationPreferred(location);
+  }
+
+  const [user_vaccine, setUserVaccine] = useState<any>()
+
+  function addUserVaccine(uservaccine:string) {
+    setUserVaccine(uservaccine);
+  }
+
+  const [transport_preferred, setUserTransport] = useState<any>()
+
+  function addUserTransport(usertransport:string) {
+    setUserTransport(usertransport);
+  }
+
 
   return (
-    <SpaceContext.Provider value={{ users, addUser, loggedusers, loginUser, logoutUser, addTrip, trips, addSuit, suit_preferred }}>
+    <SpaceContext.Provider value={{ users, addUser, loggedusers, loginUser, logoutUser, addTrip, trips, addSuit, suit_preferred, addLocation,location_preferred, user_vaccine, addUserVaccine, transport_preferred,addUserTransport  }}>
       {children}
     </SpaceContext.Provider>
   );

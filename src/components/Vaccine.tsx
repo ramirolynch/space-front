@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { SpaceContext } from "../context/SpaceContext";
 import { VaccineFace } from "../models/VaccineModel";
 import { fetchVaccines } from "../services/SpaceTravelApi";
 
@@ -11,8 +12,8 @@ export function Vaccine() {
 
   }, []);
   
-  const [vaccine, setVaccine] = useState();
-
+  const [vaccine, setVaccine] = useState<any>();
+  const { addUserVaccine } = useContext(SpaceContext);
 
   function handleSubmit(e: any) {
     e.preventDefault();
@@ -21,6 +22,7 @@ export function Vaccine() {
 
   function handleChange(e: any) {
     setVaccine(e.target.value);
+    addUserVaccine(vaccine)
     console.log("Vaccine selected", e.target.value);
   }
 
