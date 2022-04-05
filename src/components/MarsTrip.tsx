@@ -8,14 +8,14 @@ import { Vaccine } from "./Vaccine";
 import { useNavigate } from "react-router-dom";
 
 export function MarsTrip() {
-  const [showResults, setShowResults] = useState(false);
-  const onClick = () => {
-    if (showResults) {
-      setShowResults(false);
-    } else {
-      setShowResults(true);
-    }
-  };
+  // const [showResults, setShowResults] = useState(false);
+  // const onClick = () => {
+  //   if (showResults) {
+  //     setShowResults(false);
+  //   } else {
+  //     setShowResults(true);
+  //   }
+  // };
 
   let navigate = useNavigate();
   function showTrip() {
@@ -40,13 +40,14 @@ export function MarsTrip() {
     <div className="marsHeader">
       <div className="marsTrip">
         <h1>Thinking About Going To Mars</h1>
-        <button type="submit" value="Results" onClick={onClick}>
+        {/* <button type="submit" value="Results" onClick={onClick}>
           <h1 className="fabars">
             <FaBars />
           </h1>
-        </button>
+        </button> */}
       </div>
-      {showResults ? <Results /> : null}
+      {/* {showResults ? <Results /> : null} */}
+      <Results />
     </div>
   );
 }
