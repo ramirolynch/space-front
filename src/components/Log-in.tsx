@@ -36,8 +36,17 @@ export function LogIn() {
       let password: string = formData.get("password") as string;
 
       // checked for logged users
-      logIn(email, password).then(() => loginUser());
-      navigate("/getTripDetails");
+      logIn(email, password).then((response) => {
+        if (response.email !== email) {
+         
+          // we need to trigger an error to the user here saying "Invalid email or password"
+  
+          return;
+        }
+     
+        loginUser();
+        navigate("/getTripDetails");
+      })
     }
   }
 
