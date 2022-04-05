@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { VaccineFace } from "../models/VaccineModel";
+import { fetchVaccines } from "../services/SpaceTravelApi";
 
 export function Vaccine() {
+
+  const [vaccines, setVaccines] = useState<VaccineFace[]>([])
+  
+  useEffect(()=>{
+    fetchVaccines().then(data => setVaccines(data));
+
+  }, []);
+  
   const [vaccine, setVaccine] = useState();
-  const [vaccines] = React.useState([
-    { option: "Pick your location", value: "pick your location", id: 5 },
-    { option: "Phobos Virus", value: "Phobos Virus", id: 1 },
-    { option: "Deimos Virus", value: "Deimos Virus", id: 2 },
-    { option: "Crimson Virus", value: "Crimson Virus", id: 3 },
-    { option: "Quatro Virus", value: "Quatro Virus", id: 4 },
-  ]);
+
+
   function handleSubmit(e: any) {
     e.preventDefault();
     console.log("Vaccine", vaccine);
@@ -22,12 +27,14 @@ export function Vaccine() {
   return (
     <div className="optionsDrop">
       <form onSubmit={handleSubmit}>
-        <select onChange={handleChange}>
+        <select value={vaccine} onChange={handleChange}>
+
           {vaccines.map((v) => (
-            <option key={v.id} value={v.value}>
-              {v.option}
+            <option key={v.id} value={v.vaccine_name}>
+              {v.vaccine_name}
             </option>
           ))}
+
         </select>
         <div>
           {/* <button className="btn btn-success">Add Vaccine</button> */}

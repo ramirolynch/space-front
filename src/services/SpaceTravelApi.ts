@@ -207,3 +207,62 @@ export function deleteVaccine(id: number) {
     .delete(`http://localhost:3000/vaccines/${id}`)
     .then((response) => response.data);
 }
+
+export function fetchSuits() {
+  return axios
+    .get(`http://localhost:3000/suits`, {})
+    .then((response) => response.data);
+}
+
+export function fetchSuit(id: number) {
+  return axios
+    .get(`http://localhost:3000/suits/${id}`, {})
+    .then((response) => response.data);
+}
+
+export function postSuit(
+  suit_name: string,
+  suit_color: string,
+  temp_min: number,
+  temp_max: number,
+  suit_size: string,
+  location_id: number
+) {
+  return axios
+    .post(`http://localhost:3000/suits`, {
+      suit_name: suit_name,
+      suit_color: suit_color,
+      temp_min: temp_min,
+      temp_max: temp_max,
+      suit_size: suit_size,
+      location_id: location_id,
+    })
+    .then((response) => response.data);
+}
+
+export function editSuit(
+  id: number,
+  suit_name: string,
+  suit_color: string,
+  temp_min: number,
+  temp_max: number,
+  suit_size: string,
+  location_id: number
+) {
+  return axios
+    .put(`http://localhost:3000/suits/${id}`, {
+      suit_name: suit_name,
+      suit_color: suit_color,
+      temp_min: temp_min,
+      temp_max: temp_max,
+      suit_size: suit_size,
+      location_id: location_id,
+    })
+    .then((response) => response.data);
+}
+
+export function deleteSuit(id: number) {
+  return axios
+    .delete(`http://localhost:3000/suits/${id}`)
+    .then((response) => response.data);
+}

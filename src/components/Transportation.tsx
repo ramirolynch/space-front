@@ -1,17 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { TransportFace } from "../models/TransportModel";
+import { fetchTransportation } from "../services/SpaceTravelApi";
 
 export function Transportation() {
+
+  const [transports, setTransports] = useState<TransportFace[]>([])
+  
+  useEffect(()=>{
+    fetchTransportation().then(data => setTransports(data));
+
+  }, []);
+
   const [transportation, setTransportation] = useState();
-  const [transportations] = React.useState([
-    {
-      option: "Pick your transportation",
-      value: "Pick your transportation",
-      id: 1,
-    },
-    { option: "SpaceX", value: 1200, id: 2 },
-    { option: "Virgin Galactic", value: 1000, id: 3 },
-    { option: "NASA", value: 500, id: 4 },
-  ]);
+
 
   function handleSubmit(e: any) {
     e.preventDefault();
@@ -24,10 +25,10 @@ export function Transportation() {
   return (
     <div className="optionsDrop">
       <form onSubmit={handleSubmit}>
-        <select onChange={handleChange}>
-          {transportations.map((t) => (
-            <option key={t.id} value={t.value}>
-              {t.option}
+        <select value={transportation} onChange={handleChange}>
+          {transports.map((t) => (
+            <option key={t.id} value={t.company_name}>
+              {t.company_name}
             </option>
           ))}
         </select>

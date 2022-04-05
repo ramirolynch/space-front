@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { LocationFace } from "../models/LocationModel";
+import { fetchLocations, fetchTransportation } from "../services/SpaceTravelApi";
 
 export function LocationPick() {
+
+  const [locations, setLocations] = useState<LocationFace[]>([])
+  
+  useEffect(()=>{
+    fetchLocations().then(data => setLocations(data));
+
+  }, []);
+
   const [locationsPick, setLocationsPick] = useState();
-  const [locations] = React.useState([
-    { option: "Pick your location", value: "pick your location", id: 1 },
-    { option: "North Mars", value: "168 million miles", id: 2 },
-    { option: "East Mars", value: "172 million miles", id: 3 },
-    { option: "South Mars", value: "156 million miles", id: 4 },
-    { option: "West Mars", value: "189 million miles", id: 5 },
-  ]);
+ 
+
   function handleSubmit(e: any) {
     e.preventDefault();
     console.log("transportation", locationsPick);
@@ -22,10 +27,10 @@ export function LocationPick() {
   return (
     <div className="optionsDrop">
       <form onSubmit={handleSubmit}>
-        <select onChange={handleChange}>
+        <select value={locationsPick} onChange={handleChange}>
           {locations.map((l) => (
-            <option key={l.id} value={l.value}>
-              {l.option}
+            <option key={l.id} value={l.location_name}>
+              {l.location_name}
             </option>
           ))}
         </select>
