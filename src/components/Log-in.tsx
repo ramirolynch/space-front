@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../LogInSignUp.css";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { logIn } from "../services/SpaceTravelApi";
 import { SpaceContext } from "../context/SpaceContext";
 
@@ -25,7 +26,7 @@ export function LogIn() {
   function handleSubmit(e: any) {
     e.preventDefault();
 
-    if (email.length === 0 && password.length > 8) {
+    if (email.length === 0 || password.length === 0) {
       loginError();
       return;
     } else {
@@ -77,6 +78,7 @@ export function LogIn() {
           <button className="submit" type="submit">
             Submit
           </button>
+          <ToastContainer />
         </div>
       </form>
     </div>

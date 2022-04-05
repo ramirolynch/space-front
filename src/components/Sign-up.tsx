@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../LogInSignUp.css";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { signUp } from "../services/SpaceTravelApi";
 import { SpaceContext } from "../context/SpaceContext";
 
@@ -139,6 +140,7 @@ export function SignUp() {
           <button className="submit" type="submit">
             Submit
           </button>
+          <ToastContainer />
         </div>
       </form>
     </div>
