@@ -1,4 +1,5 @@
 import { ReactNode, useEffect, useState } from "react";
+import { SuitFace } from "../models/SuitModel";
 import { Trip } from "../models/TripModel";
 import { User } from "../models/UserModel";
 import { SpaceContext } from "./SpaceContext";
@@ -28,6 +29,8 @@ export function SpaceContextProvider({ children }: Props) {
     return initialValue;
   });
 
+  
+
   useEffect(() => {
     localStorage.setItem("userStorage", JSON.stringify(users));
     localStorage.setItem("userLogin", JSON.stringify(loggedusers));
@@ -48,9 +51,15 @@ export function SpaceContextProvider({ children }: Props) {
     setLoggedUser(false);
   }
 
+  const [suit_preferred, setSuitPreferred] = useState<any>()
+
+  function addSuit(suit:string) {
+    setSuitPreferred(suit);
+  }
+
 
   return (
-    <SpaceContext.Provider value={{ users, addUser, loggedusers, loginUser, logoutUser, addTrip, trips }}>
+    <SpaceContext.Provider value={{ users, addUser, loggedusers, loginUser, logoutUser, addTrip, trips, addSuit, suit_preferred }}>
       {children}
     </SpaceContext.Provider>
   );

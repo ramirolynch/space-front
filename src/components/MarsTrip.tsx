@@ -24,6 +24,7 @@ export function MarsTrip() {
 
   const Results = () => (
     <div className="resultsDropdown">
+      <form>
       <SuitsPick></SuitsPick>
       <LocationPick></LocationPick>
       {/* <TripsBook></TripsBook> */}
@@ -34,6 +35,7 @@ export function MarsTrip() {
           Book your trip
         </button>
         </div>
+      </form>
     </div>
   );
   return (

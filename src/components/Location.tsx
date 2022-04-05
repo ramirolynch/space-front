@@ -26,7 +26,7 @@ export function LocationPick() {
 
   return (
     <div className="optionsDrop">
-      <form onSubmit={handleSubmit}>
+     
         <select value={locationsPick} onChange={handleChange}>
           {locations.map((l) => (
             <option key={l.id} value={l.location_name}>
@@ -37,7 +37,6 @@ export function LocationPick() {
         <div>
           {/* <button className="btn btn-success">Add Location</button> */}
         </div>
-      </form>
     </div>
   );
 }

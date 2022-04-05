@@ -24,7 +24,7 @@ export function Transportation() {
   }
   return (
     <div className="optionsDrop">
-      <form onSubmit={handleSubmit}>
+    
         <select value={transportation} onChange={handleChange}>
           {transports.map((t) => (
             <option key={t.id} value={t.company_name}>
@@ -35,7 +35,6 @@ export function Transportation() {
         <div>
           {/* <button className="btn btn-success">Add Transportation</button> */}
         </div>
-      </form>
     </div>
   );
 }

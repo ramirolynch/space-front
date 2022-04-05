@@ -26,7 +26,7 @@ export function Vaccine() {
 
   return (
     <div className="optionsDrop">
-      <form onSubmit={handleSubmit}>
+     
         <select value={vaccine} onChange={handleChange}>
 
           {vaccines.map((v) => (
@@ -39,7 +39,7 @@ export function Vaccine() {
         <div>
           {/* <button className="btn btn-success">Add Vaccine</button> */}
         </div>
-      </form>
+
     </div>
   );
 }
