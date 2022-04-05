@@ -43,8 +43,8 @@ export function LogIn() {
   return (
     <div className="loginContainer">
       <form onSubmit={handleSubmit}>
+        <h1 className="login">Log In</h1>
         <h1>Are you Ready to go to Mars!?</h1>
-        <h2>Log In</h2>
         <label>
           <p>Email</p>
           <input
@@ -67,7 +67,7 @@ export function LogIn() {
         </label>
 
         <div>
-          <label>Don't have an account?</label>
+          <label className="dontHaveAcc">Don't have an account?</label>
           <Link className="link" to="/signup">
             Sign Up
           </Link>

@@ -38,7 +38,7 @@ export function MarsTrip() {
   );
   return (
     <div className="marsHeader">
-      <div className="marsTrip">
+      <div>
         <h1>Thinking About Going To Mars</h1>
       </div>
       <div className="results">

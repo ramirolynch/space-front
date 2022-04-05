@@ -79,7 +79,7 @@ export function SignUp() {
   return (
     <div className="loginContainer">
       <form onSubmit={handleSubmit}>
-        <h1>Sign Up</h1>
+        <h1 className="signUp">Sign Up</h1>
         <label>
           <p>First Name</p>
           <input
@@ -123,13 +123,14 @@ export function SignUp() {
         <label>
           <p>Confirm Password</p>
           <input
+            className="confirmPass"
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </label>
         <div>
-          <label>Already have an account?</label>
+          <label className="alreadyAcc">Already have an account?</label>
           <Link className="link" to="/login">
             Log In
           </Link>
