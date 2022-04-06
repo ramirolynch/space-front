@@ -38,15 +38,15 @@ export function LogIn() {
       // checked for logged users
       logIn(email, password).then((response) => {
         if (response.email !== email) {
-         
-          // we need to trigger an error to the user here saying "Invalid email or password"
-  
           return;
         }
-     
-        loginUser();
-        navigate("/getTripDetails");
+          loginUser();
+          navigate("/getTripDetails");
       })
+        .catch(error => {
+          loginError();
+          console.log(error)
+        })
     }
   }
 
