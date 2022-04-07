@@ -36,17 +36,18 @@ export function LogIn() {
       let password: string = formData.get("password") as string;
 
       // checked for logged users
-      logIn(email, password).then((response) => {
-        if (response.email !== email) {
-          return;
-        }
+      logIn(email, password)
+        .then((response) => {
+          if (response.email !== email) {
+            return;
+          }
           loginUser();
           navigate("/getTripDetails");
-      })
-        .catch(error => {
-          loginError();
-          console.log(error)
         })
+        .catch((error) => {
+          loginError();
+          console.log(error);
+        });
     }
   }
 

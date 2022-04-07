@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import DatePicker from "react-date-picker";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { FaArrowDown, FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { fetchTrips } from "../services/SpaceTravelApi";
@@ -16,6 +18,18 @@ export function TripsBook() {
     fetchTrips().then((data) => setTrips(data));
   }, []);
 
+  const datesError = () =>
+    toast.warn("please select arrival date after departure date!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      className: "toastBackground",
+    });
+
   function handleSubmit(e: any) {
     e.preventDefault();
     console.log("departure date", departure);
@@ -23,11 +37,11 @@ export function TripsBook() {
   }
 
   function verifyArrival(e: any) {
-    setArrival(e);
     if (e !== new Date() && e <= departure) {
-      alert("please select arrival date after departure date");
+      datesError();
+    } else {
+      setArrival(e);
     }
-    arrival = e;
   }
 
   let navigate = useNavigate();
@@ -58,6 +72,7 @@ export function TripsBook() {
               value={arrival}
             />
           </div>
+          <ToastContainer />
         </h3>
         {/* <FaArrowDown /> */}
         <div>{/* <button className="btn btn-success">Add Trip</button> */}</div>

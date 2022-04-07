@@ -7,7 +7,12 @@ import { Transportation } from "./Transportation";
 import { Vaccine } from "./Vaccine";
 import { useNavigate } from "react-router-dom";
 import { Trip } from "../models/TripModel";
-import { fetchLocations, fetchTransportation, fetchTrips, fetchVaccines } from "../services/SpaceTravelApi";
+import {
+  fetchLocations,
+  fetchTransportation,
+  fetchTrips,
+  fetchVaccines,
+} from "../services/SpaceTravelApi";
 import { SpaceContext } from "../context/SpaceContext";
 import { SingleTrip } from "./Trip";
 import { TransportFace } from "../models/TransportModel";
@@ -39,58 +44,63 @@ export function MarsTrip() {
   useEffect(() => {
     fetchTrips().then((data) => setTrips(data));
     fetchVaccines().then((data) => setVaccineArr(data));
-    fetchLocations().then((data)=>setLocationsArr(data))
+    fetchLocations().then((data) => setLocationsArr(data));
   }, []);
 
   function handleClick(e: any) {
     e.preventDefault();
 
-  // search for available trips matching preferences
-  // we need to use suit_preferred, location_preferred, user_vaccine and transport_preferred which come from context
+    // search for available trips matching preferences
+    // we need to use suit_preferred, location_preferred, user_vaccine and transport_preferred which come from context
 
-  
-    setPreferredTrips(trips.filter(trip => trip.location_name === locationPick ))
+    setPreferredTrips(
+      trips.filter((trip) => trip.location_name === locationPick)
+    );
 
     console.log(preferredtrips);
-
   }
 
   let navigate = useNavigate();
 
   function showTrip() {
-    console.log(`show filtered trips`)
+    console.log(`show filtered trips`);
     // navigate("/showTrip");
   }
 
   function setSuitHandler(suitPick: string) {
-    setSuitPick(suitPick)
+    setSuitPick(suitPick);
   }
 
   function setLocationsHandler(locationPick: string) {
-    setLocationPick(locationPick)
+    setLocationPick(locationPick);
   }
 
   function setTransportationHandler(transport: string) {
-    setTransportPick(transport)
+    setTransportPick(transport);
   }
 
   function setVaccineHandler(vaccine: string) {
-    setVaccinePick(vaccine)
+    setVaccinePick(vaccine);
   }
 
   const Results = () => (
     <div className="resultsDropdown">
-     
-      <SuitsPick onChange={(suitsPick)=>setSuitHandler(suitsPick)}></SuitsPick>
-      <LocationPick onChange={(locationsPick)=>setLocationsHandler(locationsPick)}></LocationPick>
-      <Transportation onChange={(transportation)=>setTransportationHandler(transportation)}></Transportation>
+      <SuitsPick
+        onChange={(suitsPick) => setSuitHandler(suitsPick)}
+      ></SuitsPick>
+      <LocationPick
+        onChange={(locationsPick) => setLocationsHandler(locationsPick)}
+      ></LocationPick>
+      <Transportation
+        onChange={(transportation) => setTransportationHandler(transportation)}
+      ></Transportation>
       <Vaccine onChange={(vaccine) => setVaccineHandler(vaccine)}></Vaccine>
-        
+
       <div className="trip">
         <button className="bookTrip" type="submit" onClick={handleClick}>
           See Available Trips
         </button>
-        </div>
+      </div>
     </div>
   );
   return (
@@ -102,7 +112,11 @@ export function MarsTrip() {
         <Results />
       </div>
 
-      {preferredtrips.filter(trip=>trip.company_name === "NASA").map((trip,i)=><SingleTrip key={i} trip={trip}></SingleTrip>)}
+      {preferredtrips
+        .filter((trip) => trip.company_name === "NASA")
+        .map((trip, i) => (
+          <SingleTrip key={i} trip={trip}></SingleTrip>
+        ))}
     </div>
   );
 }
