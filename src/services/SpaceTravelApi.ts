@@ -33,12 +33,27 @@ export function fetchTrips() {
     .then((response) => response.data);
 }
 
+export function fetchSearch(
+  company_name: string,
+  suit_name: string,
+  location_name: string
+) {
+  return axios
+    .get(
+      `http://localhost:3000/trips/${company_name}/${suit_name}/${location_name}`,
+      {}
+    )
+    .then((response) => response.data);
+}
+
 // fetch trip by trip id
 export function fetchTrip(id: number) {
   return axios
     .get(`http://localhost:3000/trips/${id}`, {})
     .then((response) => response.data);
 }
+
+fetch;
 
 export function postTrip(
   departure_date: string,
