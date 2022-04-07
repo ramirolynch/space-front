@@ -44,14 +44,14 @@ label p {
 }
 
 .link {
-  color: rgb(16, 179, 243);
+  color: rgb(112, 0, 62);
   padding-left: 10px;
   font-size: 1.5rem;
 }
 
 .submit {
-  background-color: black;
-  border-color: rgb(16, 179, 243);
+  background-color: rgb(152, 0, 109);
+  border-color: rgb(112, 0, 62);
   border-radius: 10%;
   padding: 7px 10px;
   font-size: 1.5rem;
