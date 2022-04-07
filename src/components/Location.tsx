@@ -3,7 +3,7 @@ import { SpaceContext } from "../context/SpaceContext";
 import { LocationFace } from "../models/LocationModel";
 import { fetchLocations, fetchTransportation } from "../services/SpaceTravelApi";
 
-export function LocationPick() {
+export function LocationPick(props:{onChange:(locationsPick:string)=>void}) {
 
   const [locations, setLocations] = useState<LocationFace[]>([])
   
@@ -12,35 +12,25 @@ export function LocationPick() {
 
   }, []);
 
-  const [locationsPick, setLocationsPick] = useState<any>();
-
-  const { addLocation } = useContext(SpaceContext);
- 
-
-  function handleSubmit(e: any) {
-    e.preventDefault();
-    console.log("transportation", locationsPick);
-  }
 
   function handleChange(e: any) {
-    setLocationsPick(e.target.value);
-    addLocation(locationsPick)
+ 
+    props.onChange(e.target.value);
     console.log("location picked", e.target.value);
   }
 
   return (
     <div className="optionsDrop">
-     
-        <select value={locationsPick} onChange={handleChange}>
+     <form>
+        <select onChange={handleChange}>
           {locations.map((l) => (
             <option key={l.id} value={l.location_name}>
               {l.location_name}
             </option>
           ))}
         </select>
-        <div>
-          {/* <button className="btn btn-success">Add Location</button> */}
-        </div>
+      </form>
+      
     </div>
   );
 }
