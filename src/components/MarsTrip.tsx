@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { FaBars } from "react-icons/fa";
+import { FaSignOutAlt } from "react-icons/fa";
 import { TripsBook } from "./Booktrip";
 import { LocationPick } from "./Location";
 import { SuitsPick } from "./SuitPick";
@@ -18,6 +18,7 @@ import { SingleTrip } from "./Trip";
 import { TransportFace } from "../models/TransportModel";
 import { VaccineFace } from "../models/VaccineModel";
 import { LocationFace } from "../models/LocationModel";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export function MarsTrip() {
   // const [showResults, setShowResults] = useState(false);
@@ -83,6 +84,14 @@ export function MarsTrip() {
     setVaccinePick(vaccine);
   }
 
+  function handleLogout() {
+    const saved = localStorage.getItem("userLogin");
+    if (saved === "true") {
+      localStorage.removeItem("userLogin");
+    }
+    navigate("/login");
+  }
+
   const Results = () => (
     <div className="resultsDropdown">
       <SuitsPick
@@ -105,8 +114,12 @@ export function MarsTrip() {
   );
   return (
     <div className="marsHeader">
-      <div>
-        <h1>Thinking About Going To Mars</h1>
+      <h1 className="goMars">Thinking About Going To Mars</h1>
+      <div className="logHide">
+        <div className="logout" onClick={handleLogout}>
+          <FaSignOutAlt />
+        </div>
+        <div className="hide">Logout</div>
       </div>
       <div className="results">
         <Results />

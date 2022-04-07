@@ -29,8 +29,6 @@ export function SpaceContextProvider({ children }: Props) {
     return initialValue;
   });
 
-  
-
   useEffect(() => {
     localStorage.setItem("userStorage", JSON.stringify(users));
     localStorage.setItem("userLogin", JSON.stringify(loggedusers));
@@ -51,33 +49,50 @@ export function SpaceContextProvider({ children }: Props) {
     setLoggedUser(false);
   }
 
-  const [suit_preferred, setSuitPreferred] = useState<any>()
+  const [suit_preferred, setSuitPreferred] = useState<any>();
 
-  function addSuit(suit:string) {
+  function addSuit(suit: string) {
     setSuitPreferred(suit);
   }
 
-  const [location_preferred, setLocationPreferred] = useState<any>()
+  const [location_preferred, setLocationPreferred] = useState<any>();
 
-  function addLocation(location:string) {
+  function addLocation(location: string) {
     setLocationPreferred(location);
   }
 
-  const [user_vaccine, setUserVaccine] = useState<any>()
+  const [user_vaccine, setUserVaccine] = useState<any>();
 
-  function addUserVaccine(uservaccine:string) {
+  function addUserVaccine(uservaccine: string) {
     setUserVaccine(uservaccine);
   }
 
-  const [transport_preferred, setUserTransport] = useState<any>()
+  const [transport_preferred, setUserTransport] = useState<any>();
 
-  function addUserTransport(usertransport:string) {
+  function addUserTransport(usertransport: string) {
     setUserTransport(usertransport);
   }
 
-
   return (
-    <SpaceContext.Provider value={{ users, addUser, loggedusers, loginUser, logoutUser, addTrip, trips, addSuit, suit_preferred, addLocation,location_preferred, user_vaccine, addUserVaccine, transport_preferred,addUserTransport  }}>
+    <SpaceContext.Provider
+      value={{
+        users,
+        addUser,
+        loggedusers,
+        loginUser,
+        logoutUser,
+        addTrip,
+        trips,
+        addSuit,
+        suit_preferred,
+        addLocation,
+        location_preferred,
+        user_vaccine,
+        addUserVaccine,
+        transport_preferred,
+        addUserTransport,
+      }}
+    >
       {children}
     </SpaceContext.Provider>
   );

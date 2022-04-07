@@ -18,13 +18,14 @@
 #first_name,
 #last_name,
 .confirmPass {
-  padding: 7px 5px;
+  padding: 7px 2px;
   width: 200px;
   margin: 10px;
   border-radius: 7px;
   border: 1px solid black;
   outline: none;
   letter-spacing: 1px;
+  font-size: 1.2rem;
 }
 
 .login,
@@ -56,4 +57,10 @@ label p {
   padding: 7px 10px;
   font-size: 1.5rem;
   margin-top: 20px;
+  cursor: pointer;
+}
+
+.submit:hover,
+.link:hover {
+  color: white;
 }
