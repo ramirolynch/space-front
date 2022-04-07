@@ -18,9 +18,9 @@
 #first_name,
 #last_name,
 .confirmPass {
-  padding: 7px 2px;
+  padding: 7px 0 7px 2px;
   width: 200px;
-  margin: 10px;
+  margin: 10px 7px 10px 10px;
   border-radius: 7px;
   border: 1px solid black;
   outline: none;
@@ -28,10 +28,25 @@
   font-size: 1.2rem;
 }
 
+i:hover {
+  color: white;
+  cursor: pointer;
+}
+
 .login,
 .signUp {
   font-size: 2.5rem;
   margin-top: 0;
+}
+
+.faEye {
+  position: absolute;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin: 20px;
+  font-size: 1.5rem;
 }
 
 label p {

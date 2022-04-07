@@ -5,10 +5,12 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { logIn } from "../services/SpaceTravelApi";
 import { SpaceContext } from "../context/SpaceContext";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordShown, setPasswordShown] = useState(false);
   let navigate = useNavigate();
   const { loginUser } = useContext(SpaceContext);
 
@@ -51,6 +53,10 @@ export function LogIn() {
     }
   }
 
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(passwordShown ? false : true);
+  };
+
   return (
     <div className="loginContainer">
       <form onSubmit={handleSubmit}>
@@ -63,19 +69,23 @@ export function LogIn() {
             name="email"
             id="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e: any) => setEmail(e.target.value)}
           />
         </label>
         <label>
           <p>Password</p>
           <input
-            type="password"
+            type={passwordShown ? "text" : "password"}
             name="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
+
+        <i className="faEye" onClick={togglePasswordVisiblity}>
+          {passwordShown ? <FaEye /> : <FaEyeSlash />}
+        </i>
 
         <div>
           <label className="dontHaveAcc">Don't have an account?</label>
