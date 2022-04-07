@@ -53,8 +53,6 @@ export function fetchTrip(id: number) {
     .then((response) => response.data);
 }
 
-fetch;
-
 export function postTrip(
   departure_date: string,
   arrival_date: string,
