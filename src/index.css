@@ -38,6 +38,7 @@ code {
   cursor: pointer;
   font-size: 2rem;
   border-radius: 20px;
+  color: black;
 }
 
 div.hide {
