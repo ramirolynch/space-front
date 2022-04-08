@@ -6,7 +6,8 @@ import { fetchVaccines } from "../services/SpaceTravelApi";
 export function Vaccine(props:{onChange:(vaccine:string)=>void}) {
 
   const [vaccines, setVaccines] = useState<VaccineFace[]>([])
-  const [choice, setChoice] = useState();
+  const {vaccine_choice, addVaccineChoice} = useContext(SpaceContext)
+
   
   
   useEffect(()=>{
@@ -15,18 +16,12 @@ export function Vaccine(props:{onChange:(vaccine:string)=>void}) {
   }, []);
   
 
- 
-
-  function handleChange(e: any) {
-    props.onChange(e.target.value);
-    console.log("Vaccine selected", e.target.value);
-    setChoice(e.target.value)
-  }
 
   return (
     <div className="optionsDrop">
-     <form>
-        <select value={choice} defaultValue={"default"} onChange={handleChange}>
+      <form>
+      <select value={vaccine_choice} defaultValue={"default"} onChange={(e:any)=>{addVaccineChoice(e.target.value)}}>
+   
         <option value={"default"} disabled>
           Choose Vaccine
          </option>

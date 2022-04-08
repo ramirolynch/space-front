@@ -17,7 +17,7 @@ import { SpaceContext } from "../context/SpaceContext";
 export function MarsTrip() {
 
 
- const {addPreferredTrips, preferred_trips} = useContext(SpaceContext)
+ const {addPreferredTrips, preferred_trips, location_choice, transport_choice,vaccine_choice,suit_choice} = useContext(SpaceContext)
 
   const [suitPick, setSuitPick] = useState<string>("");
   const [locationPick, setLocationPick] = useState<string>("");
@@ -32,11 +32,11 @@ export function MarsTrip() {
 
   function handleClick(e: any) {
     e.preventDefault();
-    fetchSearch(transportPick, suitPick, locationPick).then((data) => addPreferredTrips(data))
+    console.log(transport_choice, suit_choice, location_choice)
+    fetchSearch(transport_choice, suit_choice, location_choice).then((data) => addPreferredTrips(data))
 
     console.log(preferred_trips)
     
-
     // search for available trips matching preferences
     // we need to use suit_preferred, location_preferred, user_vaccine and transport_preferred which come from context
     navigate("/showTrip");
@@ -77,9 +77,7 @@ export function MarsTrip() {
       <SuitsPick
         onChange={(suitsPick) => setSuitHandler(suitsPick)}
       ></SuitsPick>
-      <LocationPick
-        onChange={(locationsPick) => setLocationsHandler(locationsPick)}
-      ></LocationPick>
+      <LocationPick onChange={(locationPick) => setLocationsHandler(locationPick)}></LocationPick>
       <Transportation
         onChange={(transportation) => setTransportationHandler(transportation)}
       ></Transportation>

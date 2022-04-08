@@ -53,6 +53,28 @@ export function SpaceContextProvider({ children }: Props) {
   function addPreferredTrips(trips: Trip[]) {
     setPreferredTrips(trips);
   }
+
+  const [location_choice, setLocationChoice] = useState<string>(""); 
+
+  function addLocationChoice(location:string) {
+    setLocationChoice(location)
+  }
+  const [transport_choice, setTransportChoice] = useState<string>(""); 
+
+  function addTransportChoice(transport:string) {
+    setTransportChoice(transport)
+  }
+  const [vaccine_choice, setVaccineChoice] = useState<string>(""); 
+
+  function addVaccineChoice(vaccine:string) {
+    setVaccineChoice(vaccine)
+  }
+
+  const [suit_choice, setSuitChoice] = useState<string>(""); 
+
+  function addSuitChoice(suit:string) {
+    setSuitChoice(suit)
+  }
   
 
   return (
@@ -66,7 +88,9 @@ export function SpaceContextProvider({ children }: Props) {
         addTrip,
         trips, 
         preferred_trips,
-      addPreferredTrips
+        addPreferredTrips,
+        location_choice,transport_choice,vaccine_choice,suit_choice,
+      addLocationChoice,addTransportChoice,addVaccineChoice,addSuitChoice
       }}
     >
       {children}

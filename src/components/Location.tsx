@@ -1,31 +1,22 @@
 import React, { useContext, useEffect, useState } from "react";
 import { SpaceContext } from "../context/SpaceContext";
 import { LocationFace } from "../models/LocationModel";
-import { fetchLocations, fetchTransportation } from "../services/SpaceTravelApi";
+import { fetchLocations} from "../services/SpaceTravelApi";
 
-export function LocationPick(props:{onChange:(locationsPick:string)=>void}) {
+export function LocationPick(props:{onChange:(locationPick:string)=>void}) {
 
   const [locations, setLocations] = useState<LocationFace[]>([])
+ const {location_choice, addLocationChoice} = useContext(SpaceContext)
   
   useEffect(()=>{
     fetchLocations().then(data => setLocations(data));
 
   }, []);
 
-  const [choice, setChoice] = useState();
-
-
-  function handleChange(e: any) {
- 
-    props.onChange(e.target.value);
-    console.log("location picked", e.target.value);
-    setChoice(e.target.value)
-  }
-
   return (
     <div className="optionsDrop">
      <form>
-        <select value={choice} defaultValue={"default"} onChange={handleChange}>
+        <select value={location_choice} defaultValue={"default"} onChange={(e:any)=>{addLocationChoice(e.target.value)}}>
         <option value={"default"} disabled>
           Choose Location
          </option>
