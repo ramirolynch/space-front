@@ -5,7 +5,7 @@ function App() {
 
   return (
     <div>
-      <MarsTrip></MarsTrip>
+      {/* <MarsTrip></MarsTrip> */}
     </div>
   );
 }

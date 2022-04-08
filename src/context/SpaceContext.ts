@@ -6,18 +6,11 @@ import { SuitFace } from "../models/SuitModel";
 export interface SpaceContextModel {
   users: User[];
   trips: Trip[];
-  suit_preferred: string;
-  location_preferred: string;
-  user_vaccine: string;
-  transport_preferred: string;
+  preferred_trips: Trip[];
   loggedusers: boolean;
   addUser: (user: User) => void;
   addTrip: (trip: Trip) => void;
-  addSuit: (suit: string) => void;
-  addLocation: (location: string) => void;
-  addUserVaccine: (uservaccine: string) => void;
-  addUserTransport: (usertransport: string) => void;
-
+  addPreferredTrips: (trips: Trip[]) => void;
   loginUser: () => void;
   logoutUser: () => void;
 }
@@ -25,17 +18,11 @@ export interface SpaceContextModel {
 const defaultValue: SpaceContextModel = {
   users: [],
   trips: [],
-  suit_preferred: "No Suit Selected",
-  location_preferred: "No Location Selected",
-  user_vaccine: "No Vaccine Selected",
-  transport_preferred: "No Transport Company Selected",
+  preferred_trips: [],
   loggedusers: false,
   addUser: () => {},
   addTrip: () => {},
-  addSuit: () => {},
-  addLocation: () => {},
-  addUserVaccine: () => {},
-  addUserTransport: () => {},
+  addPreferredTrips: () => {},
   loginUser: () => {},
   logoutUser: () => {},
 };

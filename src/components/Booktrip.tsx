@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import DatePicker from "react-date-picker";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { fetchTrips } from "../services/SpaceTravelApi";
 import { Trip } from "../models/TripModel";
 import { SingleTrip } from "./Trip";
+import { SpaceContextProvider } from "../context/SpaceContextModel";
+import { SpaceContext } from "../context/SpaceContext";
 
 export function TripsBook() {
   const [departure, setDeparture] = useState(new Date());
@@ -17,6 +19,8 @@ export function TripsBook() {
   useEffect(() => {
     fetchTrips().then((data) => setTrips(data));
   }, []);
+
+  const {preferred_trips} = useContext(SpaceContext)
 
   const datesError = () =>
     toast.warn("please select arrival date after departure date!", {
@@ -77,7 +81,7 @@ export function TripsBook() {
         {/* <FaArrowDown /> */}
         <div>{/* <button className="btn btn-success">Add Trip</button> */}</div>
       </form>
-      {trips.map((trip, i) => (
+      {preferred_trips.map((trip, i) => (
         <SingleTrip key={i} trip={trip} />
       ))}
     </div>

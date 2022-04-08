@@ -8,64 +8,44 @@ import { Vaccine } from "./Vaccine";
 import { useNavigate } from "react-router-dom";
 import { Trip } from "../models/TripModel";
 import {
-  fetchLocations,
-  fetchTransportation,
-  fetchTrips,
-  fetchVaccines,
+  fetchSearch
 } from "../services/SpaceTravelApi";
-import { SpaceContext } from "../context/SpaceContext";
 import { SingleTrip } from "./Trip";
-import { TransportFace } from "../models/TransportModel";
-import { VaccineFace } from "../models/VaccineModel";
-import { LocationFace } from "../models/LocationModel";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { SpaceContext } from "../context/SpaceContext";
+
 
 export function MarsTrip() {
-  // const [showResults, setShowResults] = useState(false);
-  // const onClick = () => {
-  //   if (showResults) {
-  //     setShowResults(false);
-  //   } else {
-  //     setShowResults(true);
-  //   }
-  // };
 
-  const [trips, setTrips] = useState<Trip[]>([]);
 
-  const [vaccinearr, setVaccineArr] = useState<VaccineFace[]>([]);
-  const [locationsarr, setLocationsArr] = useState<LocationFace[]>([]);
+ const {addPreferredTrips, preferred_trips} = useContext(SpaceContext)
 
-  const [preferredtrips, setPreferredTrips] = useState<Trip[]>([]);
+  const [suitPick, setSuitPick] = useState<string>("");
+  const [locationPick, setLocationPick] = useState<string>("");
+  const [transportPick, setTransportPick] = useState<string>("");
+  const [vaccinePick, setVaccinePick] = useState<string>("");
+  let navigate = useNavigate();
 
-  const [suitPick, setSuitPick] = useState<string>();
-  const [locationPick, setLocationPick] = useState<string>();
-  const [transportPick, setTransportPick] = useState<string>();
-  const [vaccinePick, setVaccinePick] = useState<string>();
-
-  useEffect(() => {
-    fetchTrips().then((data) => setTrips(data));
-    fetchVaccines().then((data) => setVaccineArr(data));
-    fetchLocations().then((data) => setLocationsArr(data));
-  }, []);
+  // useEffect(() => {
+  //   fetchSearch(transportPick,suitPick,locationPick).then((data) => addPreferredTrips(data));
+  
+  // }, [transportPick,suitPick,locationPick]);
 
   function handleClick(e: any) {
     e.preventDefault();
+    fetchSearch(transportPick, suitPick, locationPick).then((data) => addPreferredTrips(data))
+
+    console.log(preferred_trips)
+    
 
     // search for available trips matching preferences
     // we need to use suit_preferred, location_preferred, user_vaccine and transport_preferred which come from context
+    navigate("/showTrip");
 
-    setPreferredTrips(
-      trips.filter((trip) => trip.location_name === locationPick)
-    );
-
-    console.log(preferredtrips);
   }
 
-  let navigate = useNavigate();
 
   function showTrip() {
-    console.log(`show filtered trips`);
-    // navigate("/showTrip");
+  
   }
 
   function setSuitHandler(suitPick: string) {
@@ -125,11 +105,6 @@ export function MarsTrip() {
         <Results />
       </div>
 
-      {preferredtrips
-        .filter((trip) => trip.company_name === "NASA")
-        .map((trip, i) => (
-          <SingleTrip key={i} trip={trip}></SingleTrip>
-        ))}
     </div>
   );
 }

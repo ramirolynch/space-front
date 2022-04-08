@@ -48,30 +48,12 @@ export function SpaceContextProvider({ children }: Props) {
   function logoutUser() {
     setLoggedUser(false);
   }
+  const [preferred_trips, setPreferredTrips] = useState<Trip[]>([]); 
 
-  const [suit_preferred, setSuitPreferred] = useState<any>();
-
-  function addSuit(suit: string) {
-    setSuitPreferred(suit);
+  function addPreferredTrips(trips: Trip[]) {
+    setPreferredTrips(trips);
   }
-
-  const [location_preferred, setLocationPreferred] = useState<any>();
-
-  function addLocation(location: string) {
-    setLocationPreferred(location);
-  }
-
-  const [user_vaccine, setUserVaccine] = useState<any>();
-
-  function addUserVaccine(uservaccine: string) {
-    setUserVaccine(uservaccine);
-  }
-
-  const [transport_preferred, setUserTransport] = useState<any>();
-
-  function addUserTransport(usertransport: string) {
-    setUserTransport(usertransport);
-  }
+  
 
   return (
     <SpaceContext.Provider
@@ -82,15 +64,9 @@ export function SpaceContextProvider({ children }: Props) {
         loginUser,
         logoutUser,
         addTrip,
-        trips,
-        addSuit,
-        suit_preferred,
-        addLocation,
-        location_preferred,
-        user_vaccine,
-        addUserVaccine,
-        transport_preferred,
-        addUserTransport,
+        trips, 
+        preferred_trips,
+      addPreferredTrips
       }}
     >
       {children}
