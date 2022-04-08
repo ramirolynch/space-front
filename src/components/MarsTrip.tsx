@@ -14,13 +14,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export function MarsTrip() {
-<<<<<<< HEAD
 
 
  const {addPreferredTrips, preferred_trips, location_choice, transport_choice,vaccine_choice,suit_choice} = useContext(SpaceContext)
-=======
-  const { addPreferredTrips, preferred_trips } = useContext(SpaceContext);
->>>>>>> 1679f8b0777bdb20afbc3db5adaf6eb6e06362d2
 
   const [suitPick, setSuitPick] = useState<string>("");
   const [locationPick, setLocationPick] = useState<string>("");
@@ -35,20 +31,11 @@ export function MarsTrip() {
 
   function handleClick(e: any) {
     e.preventDefault();
-<<<<<<< HEAD
     console.log(transport_choice, suit_choice, location_choice)
     fetchSearch(transport_choice, suit_choice, location_choice).then((data) => addPreferredTrips(data))
 
     console.log(preferred_trips)
     
-=======
-    fetchSearch(transportPick, suitPick, locationPick).then((data) =>
-      addPreferredTrips(data)
-    );
-
-    console.log(preferred_trips);
-
->>>>>>> 1679f8b0777bdb20afbc3db5adaf6eb6e06362d2
     // search for available trips matching preferences
     // we need to use suit_preferred, location_preferred, user_vaccine and transport_preferred which come from context
     navigate("/showTrip");
