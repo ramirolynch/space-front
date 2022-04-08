@@ -7,17 +7,14 @@ import { Transportation } from "./Transportation";
 import { Vaccine } from "./Vaccine";
 import { useNavigate } from "react-router-dom";
 import { Trip } from "../models/TripModel";
-import {
-  fetchSearch
-} from "../services/SpaceTravelApi";
+import { fetchSearch } from "../services/SpaceTravelApi";
 import { SingleTrip } from "./Trip";
 import { SpaceContext } from "../context/SpaceContext";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export function MarsTrip() {
-
-
- const {addPreferredTrips, preferred_trips} = useContext(SpaceContext)
+  const { addPreferredTrips, preferred_trips } = useContext(SpaceContext);
 
   const [suitPick, setSuitPick] = useState<string>("");
   const [locationPick, setLocationPick] = useState<string>("");
@@ -27,26 +24,23 @@ export function MarsTrip() {
 
   // useEffect(() => {
   //   fetchSearch(transportPick,suitPick,locationPick).then((data) => addPreferredTrips(data));
-  
+
   // }, [transportPick,suitPick,locationPick]);
 
   function handleClick(e: any) {
     e.preventDefault();
-    fetchSearch(transportPick, suitPick, locationPick).then((data) => addPreferredTrips(data))
+    fetchSearch(transportPick, suitPick, locationPick).then((data) =>
+      addPreferredTrips(data)
+    );
 
-    console.log(preferred_trips)
-    
+    console.log(preferred_trips);
 
     // search for available trips matching preferences
     // we need to use suit_preferred, location_preferred, user_vaccine and transport_preferred which come from context
     navigate("/showTrip");
-
   }
 
-
-  function showTrip() {
-  
-  }
+  function showTrip() {}
 
   function setSuitHandler(suitPick: string) {
     setSuitPick(suitPick);
@@ -64,13 +58,34 @@ export function MarsTrip() {
     setVaccinePick(vaccine);
   }
 
+  const sleep = (milliseconds: any) => {
+    return new Promise((resolve) => setTimeout(resolve, milliseconds));
+  };
+
+  async function timeSensitiveAction() {
+    await sleep(3500);
+    navigate("/login");
+  }
   function handleLogout() {
     const saved = localStorage.getItem("userLogin");
     if (saved === "true") {
       localStorage.removeItem("userLogin");
     }
-    navigate("/login");
+    timeSensitiveAction();
+    logoutSuccess();
   }
+
+  const logoutSuccess = () => {
+    toast.success("You are successfully logged out", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
 
   const Results = () => (
     <div className="resultsDropdown">
@@ -100,11 +115,11 @@ export function MarsTrip() {
           <FaSignOutAlt />
         </div>
         <div className="hide">Logout</div>
+        <ToastContainer />
       </div>
       <div className="results">
         <Results />
       </div>
-
     </div>
   );
 }
