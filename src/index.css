@@ -65,14 +65,14 @@ div.hide {
   font-size: 1.2rem;
 }
 
-.bookTrip {
+/* .bookTrip {
   cursor: pointer;
-  background: none;
+  background: rgb(194, 38, 45);
   border: none;
   color: rgb(16, 179, 243);
   margin-left: 30px;
   font-size: 2rem;
-}
+} */
 
 .optionsDrop select {
   padding: 10px;
@@ -117,17 +117,18 @@ div.hide {
 button.bookTrip {
   border: 1px solid black;
   border-radius: 10px;
-  background-color: rgb(244, 198, 112);
+  background-color: darkorange;
   width: 300px;
   margin: 10px;
   font-size: 1.5rem;
   font-weight: 500;
   padding: 10px;
-  color: black;
+  color: white;
+  cursor: pointer;
 }
 
 button.bookTrip:hover {
-  background-color: rgb(152, 0, 109);
+  background-color: rgb(237, 27, 37);
   color: white;
   border: 1px solid white;
   padding-top: 10px;
