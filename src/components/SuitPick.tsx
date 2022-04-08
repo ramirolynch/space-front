@@ -8,6 +8,7 @@ export function SuitsPick(props:{onChange:(suitsPick:string)=>void}) {
 
   
   const [spacesuits, setSpaceSuits] = useState<SuitFace[]>([])
+  const [choice, setChoice] = useState();
   
   useEffect(()=>{
     fetchSuits().then(data => setSpaceSuits(data));
@@ -18,12 +19,19 @@ export function SuitsPick(props:{onChange:(suitsPick:string)=>void}) {
  
     props.onChange(e.target.value);
     console.log("suit picked", e.target.value);
-  
+    setChoice(e.target.value)
   }
+
+  
+
   return (
     <div className="optionsDrop">
      <form>
-        <select onChange={handleChange}>
+        <select value={choice} defaultValue={"default"} onChange={handleChange}>
+        <option value={"default"} disabled>
+          Choose Space Suit
+         </option>
+          
           {spacesuits.map((s) => (
             <option key={s.id} value={s.suit_name}>
               {s.suit_name}

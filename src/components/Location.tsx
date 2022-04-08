@@ -12,17 +12,23 @@ export function LocationPick(props:{onChange:(locationsPick:string)=>void}) {
 
   }, []);
 
+  const [choice, setChoice] = useState();
+
 
   function handleChange(e: any) {
  
     props.onChange(e.target.value);
     console.log("location picked", e.target.value);
+    setChoice(e.target.value)
   }
 
   return (
     <div className="optionsDrop">
      <form>
-        <select onChange={handleChange}>
+        <select value={choice} defaultValue={"default"} onChange={handleChange}>
+        <option value={"default"} disabled>
+          Choose Location
+         </option>
           {locations.map((l) => (
             <option key={l.id} value={l.location_name}>
               {l.location_name}
