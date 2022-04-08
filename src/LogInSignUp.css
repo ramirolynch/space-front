@@ -79,3 +79,46 @@ label p {
 .link:hover {
   color: white;
 }
+
+@media only screen and (max-width: 768px) {
+  .loginContainer {
+    width: 300px;
+    padding: 15px;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  #email,
+  #password,
+  #first_name,
+  #last_name,
+  .confirmPass {
+    padding: 5px 0 5px 2px;
+    width: 120px;
+    margin: 7px 5px 7px 7px;
+    font-size: 0.8rem;
+  }
+
+  label p {
+    font-size: 1rem;
+  }
+
+  .login,
+  .signUp {
+    font-size: 1.5rem;
+    margin-top: 0;
+  }
+
+  .faEye {
+    margin: 10px;
+    font-size: 1rem;
+  }
+
+  .dontHaveAcc,
+  .alreadyAcc,
+  .link,
+  .submit {
+    font-size: 1rem;
+  }
+}

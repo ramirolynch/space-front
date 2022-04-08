@@ -39,6 +39,7 @@ code {
   font-size: 2rem;
   border-radius: 20px;
   color: black;
+  margin: 5px;
 }
 
 div.hide {
@@ -52,6 +53,11 @@ div.hide {
 .logout:hover {
   background-color: rgb(152, 0, 109);
   color: white;
+  transition: 0.5s linear;
+  border-radius: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logout:hover + .hide {
@@ -59,20 +65,11 @@ div.hide {
   position: absolute;
   font-style: italic;
   top: 8%;
-  right: 10px;
+  right: 15px;
   cursor: pointer;
   color: white;
   font-size: 1.2rem;
 }
-
-/* .bookTrip {
-  cursor: pointer;
-  background: rgb(194, 38, 45);
-  border: none;
-  color: rgb(16, 179, 243);
-  margin-left: 30px;
-  font-size: 2rem;
-} */
 
 .optionsDrop select {
   padding: 10px;
@@ -166,13 +163,17 @@ button.leftArrow {
   background: none;
   border: none;
   font-size: 1.5rem;
+  transition: 0.5s linear;
+  padding: 10px;
 }
 
 button.leftArrow:hover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
-  transform: scale(1.4);
   background: rgb(152, 0, 109);
-  border-radius: 50%;
+  border-radius: 20%;
 }
 
 .arrdate {
@@ -185,7 +186,7 @@ button.leftArrow:hover {
   letter-spacing: 0.5px;
 }
 
-@media screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
   body {
     margin: 0;
     display: flex;
@@ -198,24 +199,59 @@ button.leftArrow:hover {
   }
 
   .resultsDropdown {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 250px;
     padding: 20px;
   }
 
   button.bookTrip {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 200px;
     font-size: 1rem;
+    margin: 7px;
+    padding: 7px;
   }
 
   .optionsDrop select {
     width: 200px;
     font-size: 1rem;
+    padding: 7px;
+    font-size: 1rem;
+    margin: 7px;
+  }
+
+  .goMars {
+    margin: 20px;
+  }
+
+  button.leftArrow {
+    margin: 7px;
+    font-size: 1rem;
+  }
+
+  button.leftArrow:hover .departure,
+  .arrival {
+    margin-left: 10px;
+  }
+
+  .departureText,
+  .arrivalText {
+    font-size: 1rem;
+  }
+
+  .departureHead,
+  .arrivalHead {
+    margin: 10px;
+  }
+
+  .logout {
+    margin: 7px;
+    top: 10px;
+    right: 15px;
+    padding: 7px;
+    font-size: 1.5rem;
+  }
+
+  button.leftArrow:hover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
