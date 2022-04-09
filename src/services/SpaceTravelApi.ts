@@ -1,4 +1,5 @@
 import axios from "axios";
+const accessToken = process.env.REACT_APP_NASA_ACCESS_TOKEN || "";
 
 export function signUp(
   first_name: string,
@@ -46,6 +47,14 @@ export function fetchSearch(
         location_name: location_name,
       },
     })
+    .then((response) => response.data);
+}
+
+export function fetchAsteroids() {
+  return axios
+    .get<any>(
+      `https://api.nasa.gov/neo/rest/v1/feed?start_date=2022-03-31&end_date=2022-04-01&api_key=${accessToken}`
+    )
     .then((response) => response.data);
 }
 
