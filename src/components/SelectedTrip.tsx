@@ -2,21 +2,18 @@ import { Trip } from "../models/TripModel";
 import moment from "moment";
 import { FaRocket } from "react-icons/fa";
 import {IconContext} from "react-icons"
-import { SelectedTrip } from "./SelectedTrip";
 import { useNavigate } from "react-router-dom";
-import { SpaceContext } from "../context/SpaceContext";
-import { useContext } from "react";
 
 interface Props {
   trip: Trip;
 }
 
-export function SingleTrip({ trip }: Props) {
-  
-  const {addSelectedTrip} = useContext(SpaceContext)
 
+export function SelectedTrip(trip:Trip) {
 
-  
+    function onClickHandler(id:number) {
+    
+}
   return (
     <IconContext.Provider value={{ style: {marginLeft: '10px'}}}>
     <div className="TripItem">
@@ -31,10 +28,9 @@ export function SingleTrip({ trip }: Props) {
         <li>Destination: {trip.location_name}</li>
         <li>Distance: {trip.distance} {trip.unit_of_measure}</li>
         <li>Space Suit Type: {trip.space_suit_name}</li>
-        </ul>
-        
-        <button onClick={()=>addSelectedTrip(trip.id)}>Lift-Off<FaRocket /></button>
+      </ul>
      
+              <button onClick={() => {onClickHandler(trip.id)}}>Lift-Off<FaRocket /></button>
 
     </div>
     </IconContext.Provider>

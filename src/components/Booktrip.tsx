@@ -52,6 +52,9 @@ export function TripsBook() {
   function backToMarsTripPage() {
     navigate("/getTripDetails");
   }
+  function handleClick() {
+    
+  }
 
   return (
     <div className="optionsDrop">

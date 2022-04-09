@@ -39,7 +39,7 @@ export function fetchSearch(
   location_name: string
 ) {
   return axios
-    .get(`http://localhost:3000/trips`, {
+    .get(`http://localhost:3000/trips/search`, {
       params: {
         company_name: company_name,
         suit_name: suit_name,

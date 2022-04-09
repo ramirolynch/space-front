@@ -75,6 +75,14 @@ export function SpaceContextProvider({ children }: Props) {
   function addSuitChoice(suit:string) {
     setSuitChoice(suit)
   }
+
+  const [selected_trip, setSelectedTrip] = useState<any>(); 
+
+  function addSelectedTrip(id:number) {
+    setSelectedTrip(id)
+  }
+
+
   
 
   return (
@@ -90,7 +98,7 @@ export function SpaceContextProvider({ children }: Props) {
         preferred_trips,
         addPreferredTrips,
         location_choice,transport_choice,vaccine_choice,suit_choice,
-      addLocationChoice,addTransportChoice,addVaccineChoice,addSuitChoice
+      addLocationChoice,addTransportChoice,addVaccineChoice,addSuitChoice, selected_trip,addSelectedTrip
       }}
     >
       {children}

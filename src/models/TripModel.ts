@@ -2,7 +2,7 @@ export interface Trip {
   id: number;
   departure_date: string;
   arrival_date: string;
-  trip_time: string;
+  trip_time: number;
   company_name: string;
   price: number;
   location_name: string;

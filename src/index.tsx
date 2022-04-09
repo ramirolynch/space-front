@@ -8,6 +8,7 @@ import { LogIn } from "./components/Log-in";
 import { SignUp } from "./components/Sign-up";
 import { MarsTrip } from "./components/MarsTrip";
 import { SpaceContextProvider } from "./context/SpaceContextModel";
+import { SelectedTrip } from "./components/SelectedTrip";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
