@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import DatePicker from "react-date-picker";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FaArrowDown, FaArrowLeft } from "react-icons/fa";
+import { FaArrowDown, FaArrowLeft, FaSignOutAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { fetchTrips } from "../services/SpaceTravelApi";
 import { Trip } from "../models/TripModel";
@@ -20,7 +20,7 @@ export function TripsBook() {
     fetchTrips().then((data) => setTrips(data));
   }, []);
 
-  const {preferred_trips} = useContext(SpaceContext)
+  const { preferred_trips } = useContext(SpaceContext);
 
   const datesError = () =>
     toast.warn("please select arrival date after departure date!", {
@@ -53,37 +53,80 @@ export function TripsBook() {
     navigate("/getTripDetails");
   }
 
+  const sleep = (milliseconds: any) => {
+    return new Promise((resolve) => setTimeout(resolve, milliseconds));
+  };
+
+  async function timeSensitiveAction() {
+    await sleep(3500);
+    navigate("/login");
+  }
+
+  function handleLogout() {
+    const saved = localStorage.getItem("userLogin");
+    if (saved === "true") {
+      localStorage.removeItem("userLogin");
+    }
+    timeSensitiveAction();
+    logoutSuccess();
+  }
+
+  const logoutSuccess = () => {
+    toast.success("You are successfully logged out", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
   return (
-    <div className="optionsDrop">
-      <button className="leftArrow">
-        <FaArrowLeft onClick={backToMarsTripPage}></FaArrowLeft>
-      </button>
-      <form onSubmit={handleSubmit}>
-        <h3>
-          <div className="departureHead">
-            <i className="departureText"> Departure Date </i>
-            <DatePicker
-              className="departure"
-              onChange={setDeparture}
-              value={departure}
-            />
+    <div className="booktripHeader">
+      <div className="marsHeader">
+        <h1 className="goMars">Mars Travel, Inc.</h1>
+        <div className="logHide">
+          <div className="logout" onClick={handleLogout}>
+            <FaSignOutAlt />
           </div>
-          <div className="arrivalHead">
-            <i className="arrivalText"> Arrival Date </i>
-            <DatePicker
-              className="arrival"
-              onChange={verifyArrival}
-              value={arrival}
-            />
+          <div className="hide">Logout</div>
+        </div>
+      </div>
+      <div className="optionsDrop">
+        <button className="leftArrow">
+          <FaArrowLeft onClick={backToMarsTripPage}></FaArrowLeft>
+        </button>
+        <form onSubmit={handleSubmit}>
+          <h3>
+            <div className="departureHead">
+              <i className="departureText"> Departure Date </i>
+              <DatePicker
+                className="departure"
+                onChange={setDeparture}
+                value={departure}
+              />
+            </div>
+            <div className="arrivalHead">
+              <i className="arrivalText"> Arrival Date </i>
+              <DatePicker
+                className="arrival"
+                onChange={verifyArrival}
+                value={arrival}
+              />
+            </div>
+            <ToastContainer className="booktoast"></ToastContainer>
+          </h3>
+          {/* <FaArrowDown /> */}
+          <div>
+            {/* <button className="btn btn-success">Add Trip</button> */}
           </div>
-          <ToastContainer />
-        </h3>
-        {/* <FaArrowDown /> */}
-        <div>{/* <button className="btn btn-success">Add Trip</button> */}</div>
-      </form>
-      {preferred_trips.map((trip, i) => (
-        <SingleTrip key={i} trip={trip} />
-      ))}
+        </form>
+        {preferred_trips.map((trip, i) => (
+          <SingleTrip key={i} trip={trip} />
+        ))}
+      </div>
     </div>
   );
 }

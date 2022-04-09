@@ -14,9 +14,14 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export function MarsTrip() {
-
-
- const {addPreferredTrips, preferred_trips, location_choice, transport_choice,vaccine_choice,suit_choice} = useContext(SpaceContext)
+  const {
+    addPreferredTrips,
+    preferred_trips,
+    location_choice,
+    transport_choice,
+    vaccine_choice,
+    suit_choice,
+  } = useContext(SpaceContext);
 
   const [suitPick, setSuitPick] = useState<string>("");
   const [locationPick, setLocationPick] = useState<string>("");
@@ -31,11 +36,13 @@ export function MarsTrip() {
 
   function handleClick(e: any) {
     e.preventDefault();
-    console.log(transport_choice, suit_choice, location_choice)
-    fetchSearch(transport_choice, suit_choice, location_choice).then((data) => addPreferredTrips(data))
+    console.log(transport_choice, suit_choice, location_choice);
+    fetchSearch(transport_choice, suit_choice, location_choice).then((data) =>
+      addPreferredTrips(data)
+    );
 
-    console.log(preferred_trips)
-    
+    console.log(preferred_trips);
+
     // search for available trips matching preferences
     // we need to use suit_preferred, location_preferred, user_vaccine and transport_preferred which come from context
     navigate("/showTrip");
@@ -93,7 +100,9 @@ export function MarsTrip() {
       <SuitsPick
         onChange={(suitsPick) => setSuitHandler(suitsPick)}
       ></SuitsPick>
-      <LocationPick onChange={(locationPick) => setLocationsHandler(locationPick)}></LocationPick>
+      <LocationPick
+        onChange={(locationPick) => setLocationsHandler(locationPick)}
+      ></LocationPick>
       <Transportation
         onChange={(transportation) => setTransportationHandler(transportation)}
       ></Transportation>
@@ -108,13 +117,13 @@ export function MarsTrip() {
   );
   return (
     <div className="marsHeader">
-      <h1 className="goMars">Thinking About Going To Mars</h1>
+      <h1 className="goMars">Mars Travel, Inc.</h1>
       <div className="logHide">
         <div className="logout" onClick={handleLogout}>
           <FaSignOutAlt />
         </div>
         <div className="hide">Logout</div>
-        <ToastContainer />
+        <ToastContainer className="marstoast"></ToastContainer>
       </div>
       <div className="results">
         <Results />

@@ -131,6 +131,11 @@ button.bookTrip:hover {
   padding-top: 10px;
 }
 
+.marstoast,
+.booktoast {
+  font-size: 1rem;
+}
+
 .departure,
 .arrival {
   display: flex;
@@ -180,6 +185,11 @@ button.leftArrow:hover {
   position: absolute;
 }
 
+li {
+  list-style: none;
+  padding: 5px 0;
+}
+
 .TripItem {
   background: rgba(255, 255, 255, 0.8);
   border-radius: 0.3em;
@@ -191,6 +201,29 @@ button.leftArrow:hover {
 
 .TripItem:last-of-type {
   margin-bottom: 1em;
+}
+
+.booktripHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.liftOff {
+  cursor: pointer;
+  padding: 5px 5px;
+  border: 2px solid black;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  border-radius: 0.3em;
+}
+
+.liftOff:hover {
+  background-color: rgb(152, 0, 109);
+  color: white;
+  border: 2px solid white;
 }
 
 @media only screen and (max-width: 768px) {
@@ -263,14 +296,11 @@ button.leftArrow:hover {
   }
 }
 
-.TripItem > button {
-  display: flex;
-  align-items: center;
-  margin: auto;
+/* .TripItem > button {
   border-radius: 0.3em;
 }
 
 .TripItem > button:hover {
   background-color: rgb(152, 0, 109);
   color: white;
-}
+} */
