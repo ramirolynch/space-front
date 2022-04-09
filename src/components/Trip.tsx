@@ -57,7 +57,7 @@ export function SingleTrip({ trip }: Props) {
           </li>
         </ul>
 
-        <button className="liftOff">
+        <button className="liftOff" onClick={()=>addSelectedTrip(trip.id)}>
           Lift-Off
           <FaRocket />
         </button>
