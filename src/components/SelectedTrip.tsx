@@ -6,26 +6,75 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { fetchTrip } from "../services/SpaceTravelApi";
 import { SpaceContext } from "../context/SpaceContext";
+import { toast } from "react-toastify";
+import { FaArrowDown, FaArrowLeft, FaSignOutAlt } from "react-icons/fa";
 
 
 
 export function SelectedTrip() {
 
-  const { selected_trip } = useContext(SpaceContext)
+  const { selected_trip, logoutUser,loggedusers } = useContext(SpaceContext)
   
   const [mytrip, setMyTrip] = useState<Trip>()
 
-  useEffect(() => {
+  let navigate = useNavigate();
 
+  useEffect(() => {
+  if (loggedusers === false) {
+    navigate("/login")
+  }
   fetchTrip(selected_trip).then((data)=>setMyTrip(data))      
 
   });
 
+  const sleep = (milliseconds: any) => {
+    return new Promise((resolve) => setTimeout(resolve, milliseconds));
+  };
+
+  async function timeSensitiveAction() {
+    await sleep(3500);
+    navigate("/login");
+  }
+
+  const logoutSuccess = () => {
+    toast.success("You are successfully logged out", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
+
+  function handleLogout() {
+    const saved = localStorage.getItem("userLogin");
+    if (saved === "true") {
+      logoutUser();
+      localStorage.removeItem("userLogin");
+    }
+    timeSensitiveAction();
+    logoutSuccess();
+  }
   
   
   return (
-    <IconContext.Provider value={{ style: {marginLeft: '10px'}}}>
+    <IconContext.Provider value={{ style: { marginLeft: '10px' } }}>
+      <div className="marsHeader">
+        <h1 className="goMars">Mars Travel, Inc.</h1>
+        <div className="logHide">
+          <div className="logout" onClick={handleLogout}>
+            <FaSignOutAlt />
+          </div>
+          <div className="hide">Logout</div>
+        </div>
+      </div>
+      
       <div className="TripItem">
+
+
       <ul>
         <li>
           Departure Date: {moment(mytrip?.departure_date).format("MM/DD/YYYY")}

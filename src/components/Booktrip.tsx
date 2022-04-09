@@ -15,6 +15,7 @@ export function TripsBook() {
   let [arrival, setArrival] = useState(new Date());
 
   const [trips, setTrips] = useState<Trip[]>([]);
+  let navigate = useNavigate();
 
  
    
@@ -53,7 +54,7 @@ export function TripsBook() {
     }
   }
 
-  let navigate = useNavigate();
+
   function backToMarsTripPage() {
     navigate("/getTripDetails");
   }
