@@ -19,8 +19,8 @@ export function SuitsPick(props:{onChange:(suitsPick:string)=>void}) {
   return (
     <div className="optionsDrop">
       <form>
-      <select value={suit_choice} defaultValue={"default"} onChange={(e:any)=>{addSuitChoice(e.target.value)}}>
-        <option value={"default"} disabled>
+      <select value={suit_choice} onChange={(e:any)=>{addSuitChoice(e.target.value)}}>
+        <option>
           Choose Space Suit
          </option>
           

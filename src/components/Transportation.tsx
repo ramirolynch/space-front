@@ -17,8 +17,8 @@ export function Transportation(props:{onChange:(transportation:string)=>void}) {
   return (
     <div className="optionsDrop">
       <form>
-      <select value={transport_choice} defaultValue={"default"} onChange={(e:any)=>{addTransportChoice(e.target.value)}}>
-        <option value={"default"} disabled>
+      <select value={transport_choice} onChange={(e:any)=>{addTransportChoice(e.target.value)}}>
+        <option>
           Choose Transportation
          </option>
           

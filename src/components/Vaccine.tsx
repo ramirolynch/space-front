@@ -20,9 +20,9 @@ export function Vaccine(props:{onChange:(vaccine:string)=>void}) {
   return (
     <div className="optionsDrop">
       <form>
-      <select value={vaccine_choice} defaultValue={"default"} onChange={(e:any)=>{addVaccineChoice(e.target.value)}}>
+      <select value={vaccine_choice} onChange={(e:any)=>{addVaccineChoice(e.target.value)}}>
    
-        <option value={"default"} disabled>
+        <option>
           Choose Vaccine
          </option>
           {vaccines.map((v) => (

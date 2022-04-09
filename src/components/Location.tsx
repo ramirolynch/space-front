@@ -16,8 +16,8 @@ export function LocationPick(props:{onChange:(locationPick:string)=>void}) {
   return (
     <div className="optionsDrop">
      <form>
-        <select value={location_choice} defaultValue={"default"} onChange={(e:any)=>{addLocationChoice(e.target.value)}}>
-        <option value={"default"} disabled>
+        <select value={location_choice} onChange={(e:any)=>{addLocationChoice(e.target.value)}}>
+        <option>
           Choose Location
          </option>
           {locations.map((l) => (
