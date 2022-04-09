@@ -13,8 +13,15 @@ interface Props {
 
 export function SingleTrip({ trip }: Props) {
   
-  const {addSelectedTrip} = useContext(SpaceContext)
+  const { addSelectedTrip } = useContext(SpaceContext)
+  
+  let navigate = useNavigate();
 
+  function handleClick(id: number) {
+    addSelectedTrip(id)
+    navigate(`/trips/${id}`);
+
+  }
 
   
   return (
@@ -57,7 +64,7 @@ export function SingleTrip({ trip }: Props) {
           </li>
         </ul>
 
-        <button className="liftOff" onClick={()=>addSelectedTrip(trip.id)}>
+        <button className="liftOff" onClick={()=>handleClick(trip.id)}>
           Lift-Off
           <FaRocket />
         </button>

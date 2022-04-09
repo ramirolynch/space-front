@@ -6,7 +6,7 @@ import { SuitFace } from "../models/SuitModel";
 export interface SpaceContextModel {
   users: User[];
   trips: Trip[];
-  selected_trip: number | null;
+  selected_trip: number;
   preferred_trips: Trip[];
   location_choice: string;
   suit_choice: string;
@@ -28,7 +28,7 @@ export interface SpaceContextModel {
 const defaultValue: SpaceContextModel = {
   users: [],
   trips: [],
-  selected_trip: null,
+  selected_trip: 0,
   preferred_trips: [],
   location_choice: "",
   transport_choice: "",

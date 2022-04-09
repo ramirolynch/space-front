@@ -76,13 +76,11 @@ export function SpaceContextProvider({ children }: Props) {
     setSuitChoice(suit)
   }
 
-  const [selected_trip, setSelectedTrip] = useState<any>(); 
+  const [selected_trip, setSelectedTrip] = useState<number>(0); 
 
   function addSelectedTrip(id:number) {
     setSelectedTrip(id)
   }
-
-
   
 
   return (
