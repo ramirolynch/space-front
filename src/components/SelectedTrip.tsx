@@ -25,7 +25,7 @@ export function SelectedTrip() {
   
   return (
     <IconContext.Provider value={{ style: {marginLeft: '10px'}}}>
-    <div className="TripItem">
+      <div className="TripItem">
       <ul>
         <li>
           Departure Date: {moment(mytrip?.departure_date).format("MM/DD/YYYY")}
@@ -39,7 +39,7 @@ export function SelectedTrip() {
         <li>Space Suit Type: {mytrip?.space_suit_name}</li>
       </ul>
      
-              <button>Lift-Off<FaRocket /></button>
+              <button className="liftOff">Lift-Off<FaRocket /></button>
 
     </div>
     </IconContext.Provider>
