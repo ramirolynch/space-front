@@ -126,9 +126,11 @@ export function TripsBook() {
             {/* <button className="btn btn-success">Add Trip</button> */}
           </div>
         </form>
-        {preferred_trips.map((trip, i) => (
-          <SingleTrip key={i} trip={trip} />
-        ))}
+        {
+          preferred_trips.length > 0 ? preferred_trips.map((trip, i) => (<SingleTrip key={i} trip={trip} />)) :
+            
+          <h1>There are no trips available with those selections</h1>
+        }
       </div>
     </div>
   );
