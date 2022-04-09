@@ -1,5 +1,7 @@
 import { Trip } from "../models/TripModel";
 import moment from "moment";
+import { FaRocket } from "react-icons/fa";
+import {IconContext} from "react-icons"
 
 interface Props {
   trip: Trip;
@@ -7,6 +9,7 @@ interface Props {
 
 export function SingleTrip({ trip }: Props) {
   return (
+    <IconContext.Provider value={{ style: {marginLeft: '10px'}}}>
     <div className="TripItem">
       <ul>
         <li>
@@ -20,6 +23,10 @@ export function SingleTrip({ trip }: Props) {
         <li>Distance: {trip.distance} {trip.unit_of_measure}</li>
         <li>Space Suit Type: {trip.space_suit_name}</li>
       </ul>
+     
+          <button>Lift-Off<FaRocket /></button>
+
     </div>
+    </IconContext.Provider>
   );
 }
