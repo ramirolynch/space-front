@@ -15,12 +15,14 @@ import "react-toastify/dist/ReactToastify.css";
 
 export function MarsTrip() {
   const {
+    loggedusers,
     addPreferredTrips,
     preferred_trips,
     location_choice,
     transport_choice,
     vaccine_choice,
     suit_choice,
+    logoutUser
   } = useContext(SpaceContext);
 
   const [suitPick, setSuitPick] = useState<string>("");
@@ -48,7 +50,11 @@ export function MarsTrip() {
     navigate("/showTrip");
   }
 
-  function showTrip() {}
+  useEffect(() => {
+    if (loggedusers === false) {
+      navigate("/login")
+    }
+  })
 
   function setSuitHandler(suitPick: string) {
     setSuitPick(suitPick);
@@ -77,6 +83,7 @@ export function MarsTrip() {
   function handleLogout() {
     const saved = localStorage.getItem("userLogin");
     if (saved === "true") {
+      logoutUser();
       localStorage.removeItem("userLogin");
     }
     timeSensitiveAction();

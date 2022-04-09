@@ -16,11 +16,16 @@ export function TripsBook() {
 
   const [trips, setTrips] = useState<Trip[]>([]);
 
+ 
+   
+  const { preferred_trips, logoutUser, loggedusers } = useContext(SpaceContext);
+  
   useEffect(() => {
     fetchTrips().then((data) => setTrips(data));
+    if (loggedusers === false) {
+      navigate("/login")
+    }
   }, []);
-
-  const { preferred_trips } = useContext(SpaceContext);
 
   const datesError = () =>
     toast.warn("please select arrival date after departure date!", {
@@ -68,6 +73,7 @@ export function TripsBook() {
   function handleLogout() {
     const saved = localStorage.getItem("userLogin");
     if (saved === "true") {
+      logoutUser();
       localStorage.removeItem("userLogin");
     }
     timeSensitiveAction();
