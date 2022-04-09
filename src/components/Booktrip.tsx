@@ -134,7 +134,7 @@ export function TripsBook() {
           </div>
         </form>
         {
-          preferred_trips.length > 0 ? preferred_trips.map((trip, i) => (<SingleTrip key={i} trip={trip} />)) :
+          preferred_trips.length > 0 ? preferred_trips.filter(t=> new Date(t.departure_date) >= departure).map((trip, i) => (<SingleTrip key={i} trip={trip} />)) :
             
           <h1 className="noTrips">There are no trips available with those selections</h1>
         }
