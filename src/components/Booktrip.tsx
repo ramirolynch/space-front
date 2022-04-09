@@ -135,7 +135,7 @@ export function TripsBook() {
         {
           preferred_trips.length > 0 ? preferred_trips.map((trip, i) => (<SingleTrip key={i} trip={trip} />)) :
             
-          <h1>There are no trips available with those selections</h1>
+          <h1 className="noTrips">There are no trips available with those selections</h1>
         }
       </div>
     </div>

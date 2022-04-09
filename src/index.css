@@ -226,6 +226,19 @@ li {
   border: 2px solid white;
 }
 
+.noTrips {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 20px;
+  border-radius: 1em;
+  color: rgb(152, 0, 109);
+  font-size: 3rem;
+}
+
+.noTrips:hover {
+  color: white;
+  background-color: rgba(152, 0, 109, 0.7);
+}
+
 @media only screen and (max-width: 768px) {
   body {
     margin: 0;
@@ -293,6 +306,11 @@ li {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .noTrips {
+    padding: 10px;
+    font-size: 2rem;
   }
 }
 
