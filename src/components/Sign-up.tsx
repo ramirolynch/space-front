@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { signUp } from "../services/SpaceTravelApi";
 import { SpaceContext } from "../context/SpaceContext";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export function SignUp() {
   const { addUser } = useContext(SpaceContext);
@@ -13,6 +14,16 @@ export function SignUp() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordShown, setPasswordShown] = useState(false);
+  const [passwordConfirmShown, setPasswordConfirmShown] = useState(false);
+
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(passwordShown ? false : true);
+  };
+
+  const toggleConfirmPasswordVisiblity = () => {
+    setPasswordConfirmShown(passwordConfirmShown ? false : true);
+  };
 
   const navigate = useNavigate();
 
@@ -114,22 +125,28 @@ export function SignUp() {
         <label>
           <p>Password</p>
           <input
-            type="password"
+            type={passwordShown ? "text" : "password"}
             name="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
+        <i className="faEye" onClick={togglePasswordVisiblity}>
+          {passwordShown ? <FaEye /> : <FaEyeSlash />}
+        </i>
         <label>
           <p>Confirm Password</p>
           <input
             className="confirmPass"
-            type="password"
+            type={passwordConfirmShown ? "text" : "password"}
             value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            onChange={(e: any) => setConfirmPassword(e.target.value)}
           />
         </label>
+        <i className="faEye" onClick={toggleConfirmPasswordVisiblity}>
+          {passwordConfirmShown ? <FaEye /> : <FaEyeSlash />}
+        </i>
         <div>
           <label className="alreadyAcc">Already have an account?</label>
           <Link className="link" to="/login">

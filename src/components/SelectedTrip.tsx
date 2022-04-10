@@ -1,6 +1,5 @@
 import { Trip } from "../models/TripModel";
 import moment from "moment";
-import { FaPrint, FaRocket } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
@@ -8,7 +7,7 @@ import { fetchTrip } from "../services/SpaceTravelApi";
 import { SpaceContext } from "../context/SpaceContext";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FaArrowDown, FaSignOutAlt } from "react-icons/fa";
+import { FaSignOutAlt, FaPrint } from "react-icons/fa";
 import jsPDF from "jspdf";
 import { IMAGE_BASE64 } from "../constants/ImageHelper";
 
