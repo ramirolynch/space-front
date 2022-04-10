@@ -248,6 +248,22 @@ li {
   border: 10px solid rgba(152, 0, 109, 0.7);
 }
 
+.download {
+  cursor: pointer;
+  padding: 5px 5px;
+  border: 2px solid black;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  border-radius: 0.3em;
+}
+
+.download:hover {
+  background-color: rgb(152, 0, 109);
+  color: white;
+  border: 2px solid white;
+}
+
 /* .frame > figure {
   left: 700px;
 } */
