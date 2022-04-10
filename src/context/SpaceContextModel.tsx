@@ -48,40 +48,39 @@ export function SpaceContextProvider({ children }: Props) {
   function logoutUser() {
     setLoggedUser(false);
   }
-  const [preferred_trips, setPreferredTrips] = useState<Trip[]>([]); 
+  const [preferred_trips, setPreferredTrips] = useState<Trip[]>([]);
 
   function addPreferredTrips(trips: Trip[]) {
     setPreferredTrips(trips);
   }
 
-  const [location_choice, setLocationChoice] = useState<string>(""); 
+  const [location_choice, setLocationChoice] = useState<string>("");
 
-  function addLocationChoice(location:string) {
-    setLocationChoice(location)
+  function addLocationChoice(location: string) {
+    setLocationChoice(location);
   }
-  const [transport_choice, setTransportChoice] = useState<string>(""); 
+  const [transport_choice, setTransportChoice] = useState<string>("");
 
-  function addTransportChoice(transport:string) {
-    setTransportChoice(transport)
+  function addTransportChoice(transport: string) {
+    setTransportChoice(transport);
   }
-  const [vaccine_choice, setVaccineChoice] = useState<string>(""); 
+  const [vaccine_choice, setVaccineChoice] = useState<string>("");
 
-  function addVaccineChoice(vaccine:string) {
-    setVaccineChoice(vaccine)
-  }
-
-  const [suit_choice, setSuitChoice] = useState<string>(""); 
-
-  function addSuitChoice(suit:string) {
-    setSuitChoice(suit)
+  function addVaccineChoice(vaccine: string) {
+    setVaccineChoice(vaccine);
   }
 
-  const [selected_trip, setSelectedTrip] = useState<number>(0); 
+  const [suit_choice, setSuitChoice] = useState<string>("");
 
-  function addSelectedTrip(id:number) {
-    setSelectedTrip(id)
+  function addSuitChoice(suit: string) {
+    setSuitChoice(suit);
   }
-  
+
+  const [selected_trip, setSelectedTrip] = useState<number>(0);
+
+  function addSelectedTrip(id: number) {
+    setSelectedTrip(id);
+  }
 
   return (
     <SpaceContext.Provider
@@ -92,11 +91,19 @@ export function SpaceContextProvider({ children }: Props) {
         loginUser,
         logoutUser,
         addTrip,
-        trips, 
+        trips,
         preferred_trips,
         addPreferredTrips,
-        location_choice,transport_choice,vaccine_choice,suit_choice,
-      addLocationChoice,addTransportChoice,addVaccineChoice,addSuitChoice, selected_trip,addSelectedTrip
+        location_choice,
+        transport_choice,
+        vaccine_choice,
+        suit_choice,
+        addLocationChoice,
+        addTransportChoice,
+        addVaccineChoice,
+        addSuitChoice,
+        selected_trip,
+        addSelectedTrip,
       }}
     >
       {children}

@@ -17,14 +17,12 @@ export function TripsBook() {
   const [trips, setTrips] = useState<Trip[]>([]);
   let navigate = useNavigate();
 
- 
-   
   const { preferred_trips, logoutUser, loggedusers } = useContext(SpaceContext);
-  
+
   useEffect(() => {
     fetchTrips().then((data) => setTrips(data));
     if (loggedusers === false) {
-      navigate("/login")
+      navigate("/login");
     }
   }, []);
 
@@ -54,13 +52,10 @@ export function TripsBook() {
     }
   }
 
-
   function backToMarsTripPage() {
     navigate("/getTripDetails");
   }
-  function handleClick() {
-    
-  }
+  function handleClick() {}
 
   const sleep = (milliseconds: any) => {
     return new Promise((resolve) => setTimeout(resolve, milliseconds));
@@ -133,11 +128,15 @@ export function TripsBook() {
             {/* <button className="btn btn-success">Add Trip</button> */}
           </div>
         </form>
-        {
-          preferred_trips.length > 0 ? preferred_trips.filter(t=> new Date(t.departure_date) >= departure).map((trip, i) => (<SingleTrip key={i} trip={trip} />)) :
-            
-          <h1 className="noTrips">There are no trips available with those selections</h1>
-        }
+        {preferred_trips.length > 0 ? (
+          preferred_trips
+            .filter((t) => new Date(t.departure_date) >= departure)
+            .map((trip, i) => <SingleTrip key={i} trip={trip} />)
+        ) : (
+          <h1 className="noTrips">
+            There are no trips available with those selections
+          </h1>
+        )}
       </div>
     </div>
   );

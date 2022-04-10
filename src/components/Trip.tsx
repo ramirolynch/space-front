@@ -31,6 +31,7 @@ export function SingleTrip({ trip }: Props) {
     doc.setTextColor("white");
     doc.addFont("helvetica", "normal", "sans-serif", 700);
     doc.text("BOARDING PASS", 220, 20);
+    // doc.text("Passenger Name :" + "" + )
     doc.text(
       "Departure Date :" +
         "" +

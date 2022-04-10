@@ -22,7 +22,7 @@ export function MarsTrip() {
     transport_choice,
     vaccine_choice,
     suit_choice,
-    logoutUser
+    logoutUser,
   } = useContext(SpaceContext);
 
   const [suitPick, setSuitPick] = useState<string>("");
@@ -52,9 +52,9 @@ export function MarsTrip() {
 
   useEffect(() => {
     if (loggedusers === false) {
-      navigate("/login")
+      navigate("/login");
     }
-  })
+  }, []);
 
   function setSuitHandler(suitPick: string) {
     setSuitPick(suitPick);
