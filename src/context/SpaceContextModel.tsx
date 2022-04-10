@@ -82,6 +82,18 @@ export function SpaceContextProvider({ children }: Props) {
     setSelectedTrip(id);
   }
 
+  const [first_name, setFirstName] = useState<string>('');
+
+  function addFirstName(first_name: string) {
+    setFirstName(first_name);
+  }
+
+  const [last_name, setLastName] = useState<string>('');
+
+  function addLastName(last_name: string) {
+    setLastName(last_name);
+  }
+
   return (
     <SpaceContext.Provider
       value={{
@@ -104,6 +116,10 @@ export function SpaceContextProvider({ children }: Props) {
         addSuitChoice,
         selected_trip,
         addSelectedTrip,
+        last_name,
+        first_name,
+        addFirstName,
+        addLastName
       }}
     >
       {children}

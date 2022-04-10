@@ -13,7 +13,7 @@ export function LogIn() {
   const [password, setPassword] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
   let navigate = useNavigate();
-  const { loginUser } = useContext(SpaceContext);
+  const { loginUser, addFirstName,addLastName } = useContext(SpaceContext);
 
   const loginError = () =>
     toast.error("Invalid email or password", {
@@ -44,6 +44,8 @@ export function LogIn() {
           if (response.email !== email) {
             return;
           }
+          addFirstName(response.first_name)
+          addLastName(response.last_name)
           loginUser();
           navigate("/getTripDetails");
         })
