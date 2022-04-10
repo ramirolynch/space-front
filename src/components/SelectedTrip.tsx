@@ -1,6 +1,6 @@
 import { Trip } from "../models/TripModel";
 import moment from "moment";
-import { FaRocket } from "react-icons/fa";
+import { FaPrint, FaRocket } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
@@ -140,7 +140,7 @@ export function SelectedTrip() {
         </ul>
 
         <button className="download" onClick={() => handleClick(mytrip)}>
-          Print boarding pass <FaArrowDown />
+          Print boarding pass <FaPrint />
         </button>
         <ToastContainer />
       </div>
