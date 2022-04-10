@@ -239,6 +239,18 @@ li {
   background-color: rgba(152, 0, 109, 0.7);
 }
 
+.frame > figure > img {
+  width: 300px;
+  position: absolute;
+  left: 700px;
+  border-radius: 10%;
+  border: 10px solid rgba(152, 0, 109, 0.7);
+}
+
+/* .frame > figure {
+  left: 700px;
+} */
+
 @media only screen and (max-width: 768px) {
   body {
     margin: 0;

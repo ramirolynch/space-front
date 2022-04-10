@@ -3,9 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import "../LogInSignUp.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { logIn } from "../services/SpaceTravelApi";
+import { fetchPhoto, logIn } from "../services/SpaceTravelApi";
 import { SpaceContext } from "../context/SpaceContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { PhotoOfDay } from "./PhotoOfDay";
 
 export function LogIn() {
   const [email, setEmail] = useState("");
@@ -59,6 +60,7 @@ export function LogIn() {
 
   return (
     <div className="loginContainer">
+      <PhotoOfDay></PhotoOfDay>
       <form onSubmit={handleSubmit}>
         <h1 className="login">Log In</h1>
         <h1>Are you Ready to go to Mars!?</h1>
@@ -101,6 +103,7 @@ export function LogIn() {
           <ToastContainer />
         </div>
       </form>
+      
     </div>
   );
 }

@@ -50,6 +50,12 @@ export function fetchSearch(
     .then((response) => response.data);
 }
 
+export function fetchPhoto() {
+  return axios
+    .get<any>(`https://api.nasa.gov/planetary/apod?api_key=${accessToken}`)
+    .then((response) => response.data);
+}
+
 export function fetchAsteroids() {
   return axios
     .get<any>(
