@@ -70,7 +70,15 @@ export function SelectedTrip() {
     doc.setTextColor("white");
     doc.addFont("helvetica", "normal", "sans-serif", 700);
     doc.text("BOARDING PASS", 220, 20);
-    doc.text("Passenger Name :" + "" + first_name + " " + last_name, 20, 40);
+    doc.text(
+      "Passenger Name :" +
+        "" +
+        first_name.toUpperCase() +
+        " " +
+        last_name.toUpperCase(),
+      20,
+      40
+    );
     doc.text(
       "Departure Date :" +
         "" +
