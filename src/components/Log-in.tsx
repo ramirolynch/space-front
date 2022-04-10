@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../LogInSignUp.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { fetchPhoto, logIn } from "../services/SpaceTravelApi";
+import { fetchPhoto, fetchUser, logIn } from "../services/SpaceTravelApi";
 import { SpaceContext } from "../context/SpaceContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { PhotoOfDay } from "./PhotoOfDay";
@@ -38,14 +38,14 @@ export function LogIn() {
       let email: string = formData.get("email") as string;
       let password: string = formData.get("password") as string;
 
+      logIn(email, password).then(response => fetchUser(response.id)).then(data => { addFirstName(data.first_name); addLastName(data.last_name) }).catch(error => console.log(error));
+
       // checked for logged users
       logIn(email, password)
         .then((response) => {
           if (response.email !== email) {
             return;
           }
-          addFirstName(response.first_name)
-          addLastName(response.last_name)
           loginUser();
           navigate("/getTripDetails");
         })
