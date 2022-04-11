@@ -9,6 +9,7 @@ import { Trip } from "../models/TripModel";
 import { SingleTrip } from "./Trip";
 import { SpaceContextProvider } from "../context/SpaceContextModel";
 import { SpaceContext } from "../context/SpaceContext";
+import moment from "moment";
 
 export function TripsBook() {
   const [departure, setDeparture] = useState(new Date());
@@ -130,7 +131,7 @@ export function TripsBook() {
         </form>
         {preferred_trips.length > 0 ? (
           preferred_trips
-            .filter((t) => new Date(t.departure_date) >= departure)
+            .filter((t) => moment(t.departure_date).format() >= moment(departure).format())
             .map((trip, i) => <SingleTrip key={i} trip={trip} />)
         ) : (
           <h1 className="noTrips">
