@@ -12,8 +12,14 @@ import jsPDF from "jspdf";
 import { IMAGE_BASE64 } from "../constants/ImageHelper";
 
 export function SelectedTrip() {
-  const { selected_trip, logoutUser, loggedusers, first_name, last_name } =
-    useContext(SpaceContext);
+  const {
+    selected_trip,
+    logoutUser,
+    loggedusers,
+    first_name,
+    last_name,
+    vaccine_choice,
+  } = useContext(SpaceContext);
 
   const [mytrip, setMyTrip] = useState<Trip>();
 
@@ -104,6 +110,7 @@ export function SelectedTrip() {
       180
     );
     doc.text("Space Suit Type :" + "" + trip.space_suit_name + "", 20, 200);
+    doc.text("Vaccine Choice :" + "" + vaccine_choice + "", 20, 220);
     doc.save("boardingPass.pdf");
   }
 
