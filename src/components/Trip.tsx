@@ -44,8 +44,7 @@ export function SingleTrip({ trip }: Props) {
             {trip.company_name}
           </li>
           <li>
-            <h3 style={{ display: "inline" }}>Trip Price:</h3>
-            {trip.price}
+            <h3 style={{ display: "inline" }}>Trip Price:</h3>${trip.price}
           </li>
           <li>
             <h3 style={{ display: "inline" }}>Destination:</h3>

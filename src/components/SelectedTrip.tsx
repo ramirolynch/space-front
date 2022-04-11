@@ -102,7 +102,7 @@ export function SelectedTrip() {
     );
     doc.text("Trip time (Terrestrial Hours) :" + "" + trip.trip_time, 20, 100);
     doc.text("Transportation Company :" + "" + trip.company_name, 20, 120);
-    doc.text("Trip Price :" + "" + trip.price + "", 20, 140);
+    doc.text("Trip Price :" + "" + "$" + trip.price + "", 20, 140);
     doc.text("Destination :" + "" + trip.location_name + "", 20, 160);
     doc.text(
       "Distance :" + "" + trip.distance + " " + trip.unit_of_measure,
@@ -137,7 +137,7 @@ export function SelectedTrip() {
           </li>
           <li>Trip time (Terrestrial Hours): {mytrip?.trip_time}</li>
           <li>Transportation Company: {mytrip?.company_name}</li>
-          <li>Trip Price: {mytrip?.price}</li>
+          <li>Trip Price: ${mytrip?.price}</li>
           <li>Destination: {mytrip?.location_name}</li>
           <li>
             Distance: {mytrip?.distance} {mytrip?.unit_of_measure}
