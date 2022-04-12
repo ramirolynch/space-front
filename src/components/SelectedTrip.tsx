@@ -3,7 +3,7 @@ import moment from "moment";
 import { IconContext } from "react-icons";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { bookTrip, fetchTrip, fetchVaccines, userVaccineCompliant } from "../services/SpaceTravelApi";
+import { bookTrip, fetchLocations, fetchTrip, fetchVaccines, userVaccineCompliant } from "../services/SpaceTravelApi";
 import { SpaceContext } from "../context/SpaceContext";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -11,6 +11,7 @@ import { FaSignOutAlt, FaPrint } from "react-icons/fa";
 import jsPDF from "jspdf";
 import { IMAGE_BASE64 } from "../constants/ImageHelper";
 import { VaccineFace } from "../models/VaccineModel";
+import { LocationFace } from "../models/LocationModel";
 
 export function SelectedTrip() {
   const {
@@ -20,11 +21,12 @@ export function SelectedTrip() {
     loggedusers,
     first_name,
     last_name,
-    vaccine_choice,
+    vaccine_choice
   } = useContext(SpaceContext);
 
   const [mytrip, setMyTrip] = useState<Trip>();
   const [vaccinesarr, setVaccineArr] = useState<VaccineFace[]>([]);
+  const [locationsarr, setLocationsArr] = useState<LocationFace[]>([]);
   const [vaccinecompliant, setVaccineCompliant] = useState<boolean>();
   const [vaccineText, setVaccineText] = useState<string>("");
 
@@ -36,6 +38,7 @@ export function SelectedTrip() {
     }
     fetchVaccines().then((data) => setVaccineArr(data));
     fetchTrip(selected_trip).then((data) => setMyTrip(data));
+    fetchLocations().then((data) => setLocationsArr(data));
   }, []);
 
   const sleep = (milliseconds: any) => {
@@ -74,9 +77,12 @@ export function SelectedTrip() {
     generatePDF(mytrip);
     console.log(user_id, mytrip.id);
     bookTrip(user_id, mytrip.id);
-    const vaccineRequired = vaccinesarr.find(v => v.location_id === mytrip.location_id);
-    
-    setVaccineCompliant(vaccineRequired?.vaccine_name === vaccine_choice ? true : false)
+    const mylocation = locationsarr.find(l => l.location_name === mytrip.location_name);
+    const vaccineRequired = vaccinesarr.find(v => v.location_id === mylocation?.id);
+    let vaxcompliant = vaccineRequired?.vaccine_name === vaccine_choice ? true : false;
+
+    setVaccineCompliant(vaxcompliant)
+
     if (vaccinecompliant === true) {
       userVaccineCompliant(user_id);
     }
@@ -125,7 +131,7 @@ export function SelectedTrip() {
       180
     );
     doc.text("Space Suit Type :" + "" + trip.space_suit_name + "", 20, 200);
-    doc.text(vaccineText, 20, 220);
+    doc.text("Vaccine Status: " + "" + vaccineText, 20, 220);
     doc.save("boardingPass.pdf");
   }
 
