@@ -13,12 +13,58 @@
   border: 2px solid black;
 }
 
-#email,
-#password,
+h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-top: 0;
+}
+
 #first_name,
-#last_name,
+#last_name {
+  padding: 7px 0 7px 7px;
+  width: 222px;
+  margin: 10px 7px 10px 10px;
+  border-radius: 7px;
+  border: 1px solid black;
+  outline: none;
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+}
+
 .confirmPass {
-  padding: 7px 0 7px 2px;
+  padding: 7px 0 7px 28px;
+  width: 200px;
+  margin: 10px 7px 10px 10px;
+  border-radius: 7px;
+  border: 1px solid black;
+  outline: none;
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+}
+
+#email {
+  padding: 7px 0 7px 28px;
+  width: 200px;
+  margin: 10px 7px 10px 10px;
+  border-radius: 7px;
+  border: 1px solid black;
+  outline: none;
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+}
+
+.fauser,
+.falock {
+  position: absolute;
+  display: inline;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin: 20px;
+}
+
+#password {
+  padding: 7px 0 7px 28px;
   width: 200px;
   margin: 10px 7px 10px 10px;
   border-radius: 7px;
@@ -31,12 +77,6 @@
 i:hover {
   color: white;
   cursor: pointer;
-}
-
-.login,
-.signUp {
-  font-size: 2.5rem;
-  margin-top: 0;
 }
 
 .faEye {
@@ -91,11 +131,17 @@ label p {
 
   #email,
   #password,
-  #first_name,
-  #last_name,
   .confirmPass {
-    padding: 5px 0 5px 2px;
+    padding: 5px 0 5px 18px;
     width: 120px;
+    margin: 7px 5px 7px 7px;
+    font-size: 0.8rem;
+  }
+
+  #first_name,
+  #last_name {
+    padding: 5px 0 5px 9px;
+    width: 130px;
     margin: 7px 5px 7px 7px;
     font-size: 0.8rem;
   }
@@ -104,10 +150,10 @@ label p {
     font-size: 1rem;
   }
 
-  .login,
-  .signUp {
-    font-size: 1.5rem;
-    margin-top: 0;
+  .fauser,
+  .falock {
+    margin: 15px;
+    font-size: 10px;
   }
 
   .faEye {

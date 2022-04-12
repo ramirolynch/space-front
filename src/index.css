@@ -341,13 +341,8 @@ li {
     padding: 10px;
     font-size: 2rem;
   }
-}
 
-/* .TripItem > button {
-  border-radius: 0.3em;
+  .frame img {
+    width: 200px;
+  }
 }
-
-.TripItem > button:hover {
-  background-color: rgb(152, 0, 109);
-  color: white;
-} */

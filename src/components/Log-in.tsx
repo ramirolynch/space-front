@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { fetchPhoto, fetchUser, logIn } from "../services/SpaceTravelApi";
 import { SpaceContext } from "../context/SpaceContext";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaLock, FaUser } from "react-icons/fa";
 import { PhotoOfDay } from "./PhotoOfDay";
 
 export function LogIn() {
@@ -13,7 +13,8 @@ export function LogIn() {
   const [password, setPassword] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
   let navigate = useNavigate();
-  const { loginUser, addFirstName,addLastName, addUserId } = useContext(SpaceContext);
+  const { loginUser, addFirstName, addLastName, addUserId } =
+    useContext(SpaceContext);
 
   const loginError = () =>
     toast.error("Invalid email or password", {
@@ -38,7 +39,14 @@ export function LogIn() {
       let email: string = formData.get("email") as string;
       let password: string = formData.get("password") as string;
 
-      logIn(email, password).then(response => fetchUser(response.id)).then(data => { addFirstName(data.first_name); addLastName(data.last_name); addUserId(data.id) }).catch(error => console.log(error));
+      logIn(email, password)
+        .then((response) => fetchUser(response.id))
+        .then((data) => {
+          addFirstName(data.first_name);
+          addLastName(data.last_name);
+          addUserId(data.id);
+        })
+        .catch((error) => console.log(error));
 
       // checked for logged users
       logIn(email, password)
@@ -64,10 +72,10 @@ export function LogIn() {
     <div className="loginContainer">
       <PhotoOfDay></PhotoOfDay>
       <form onSubmit={handleSubmit}>
-        <h1 className="login">Log In</h1>
         <h1>Are you Ready to go to Mars!?</h1>
         <label>
           <p>Email</p>
+          <FaUser className="fauser"></FaUser>
           <input
             type="text"
             name="email"
@@ -78,6 +86,7 @@ export function LogIn() {
         </label>
         <label>
           <p>Password</p>
+          <FaLock className="falock"></FaLock>
           <input
             type={passwordShown ? "text" : "password"}
             name="password"
@@ -100,12 +109,11 @@ export function LogIn() {
 
         <div>
           <button className="submit" type="submit">
-            Submit
+            Login
           </button>
           <ToastContainer />
         </div>
       </form>
-      
     </div>
   );
 }

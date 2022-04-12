@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { logIn, signUp } from "../services/SpaceTravelApi";
 import { SpaceContext } from "../context/SpaceContext";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaLock, FaUser } from "react-icons/fa";
 
 export function SignUp() {
   const { addUser, loginUser } = useContext(SpaceContext);
@@ -79,7 +79,7 @@ export function SignUp() {
       let password: string = formData.get("password") as string;
       signUp(first_name, last_name, email, password).then((newuser) =>
         addUser(newuser)
-      )
+      );
       setFirstName("");
       setLastName("");
       setEmail("");
@@ -92,7 +92,6 @@ export function SignUp() {
   return (
     <div className="loginContainer">
       <form onSubmit={handleSubmit}>
-        <h1 className="signUp">Sign Up</h1>
         <label>
           <p>First Name</p>
           <input
@@ -115,6 +114,7 @@ export function SignUp() {
         </label>
         <label>
           <p>Email</p>
+          <FaUser className="fauser"></FaUser>
           <input
             type="text"
             name="email"
@@ -125,6 +125,7 @@ export function SignUp() {
         </label>
         <label>
           <p>Password</p>
+          <FaLock className="falock"></FaLock>
           <input
             type={passwordShown ? "text" : "password"}
             name="password"
@@ -138,6 +139,7 @@ export function SignUp() {
         </i>
         <label>
           <p>Confirm Password</p>
+          <FaLock className="falock"></FaLock>
           <input
             className="confirmPass"
             type={passwordConfirmShown ? "text" : "password"}
@@ -156,7 +158,7 @@ export function SignUp() {
         </div>
         <div>
           <button className="submit" type="submit">
-            Submit
+            SignUp
           </button>
           <ToastContainer />
         </div>
@@ -164,5 +166,3 @@ export function SignUp() {
     </div>
   );
 }
-
-
