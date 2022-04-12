@@ -28,7 +28,6 @@ export function SelectedTrip() {
   const [vaccinesarr, setVaccineArr] = useState<VaccineFace[]>([]);
   const [locationsarr, setLocationsArr] = useState<LocationFace[]>([]);
   const [vaccinecompliant, setVaccineCompliant] = useState<boolean>();
-  const [vaccineText, setVaccineText] = useState<string>("");
 
   let navigate = useNavigate();
 
@@ -81,12 +80,16 @@ export function SelectedTrip() {
     const vaccineRequired = vaccinesarr.find(v => v.location_id === mylocation?.id);
     let vaxcompliant = vaccineRequired?.vaccine_name === vaccine_choice ? true : false;
 
+    console.log("vaxcompliant",vaxcompliant);
+
     setVaccineCompliant(vaxcompliant)
+
+    console.log("vaccinecompliant",vaccinecompliant)
 
     if (vaccinecompliant === true) {
       userVaccineCompliant(user_id);
     }
-    setVaccineText(vaccinecompliant === true ? `Passenger is immunized against ${vaccineRequired?.vaccine_name}.` : `Passenger must be immunized against ${vaccineRequired?.vaccine_name} before travel`);
+    
   }
 
   function generatePDF(trip: Trip) {
@@ -131,7 +134,7 @@ export function SelectedTrip() {
       180
     );
     doc.text("Space Suit Type :" + "" + trip.space_suit_name + "", 20, 200);
-    doc.text("Vaccine Status: " + "" + vaccineText, 20, 220);
+    doc.text("Vaccine Status: " + "" + vaccinecompliant + "", 20, 220);
     doc.save("boardingPass.pdf");
   }
 
