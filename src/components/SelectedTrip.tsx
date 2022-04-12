@@ -3,7 +3,7 @@ import moment from "moment";
 import { IconContext } from "react-icons";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { fetchTrip } from "../services/SpaceTravelApi";
+import { bookTrip, fetchTrip } from "../services/SpaceTravelApi";
 import { SpaceContext } from "../context/SpaceContext";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -13,6 +13,7 @@ import { IMAGE_BASE64 } from "../constants/ImageHelper";
 
 export function SelectedTrip() {
   const {
+    user_id,
     selected_trip,
     logoutUser,
     loggedusers,
@@ -66,6 +67,8 @@ export function SelectedTrip() {
   function handleClick(mytrip: any) {
     console.log("names", first_name, last_name);
     generatePDF(mytrip);
+    console.log(user_id, mytrip.id);
+    bookTrip(user_id, mytrip.id);
   }
 
   function generatePDF(trip: Trip) {

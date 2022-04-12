@@ -13,7 +13,7 @@ export function LogIn() {
   const [password, setPassword] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
   let navigate = useNavigate();
-  const { loginUser, addFirstName,addLastName } = useContext(SpaceContext);
+  const { loginUser, addFirstName,addLastName, addUserId } = useContext(SpaceContext);
 
   const loginError = () =>
     toast.error("Invalid email or password", {
@@ -38,7 +38,7 @@ export function LogIn() {
       let email: string = formData.get("email") as string;
       let password: string = formData.get("password") as string;
 
-      logIn(email, password).then(response => fetchUser(response.id)).then(data => { addFirstName(data.first_name); addLastName(data.last_name) }).catch(error => console.log(error));
+      logIn(email, password).then(response => fetchUser(response.id)).then(data => { addFirstName(data.first_name); addLastName(data.last_name); addUserId(data.id) }).catch(error => console.log(error));
 
       // checked for logged users
       logIn(email, password)

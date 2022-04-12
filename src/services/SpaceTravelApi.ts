@@ -303,3 +303,11 @@ export function deleteSuit(id: number) {
     .delete(`http://localhost:3000/suits/${id}`)
     .then((response) => response.data);
 }
+
+export function bookTrip(id: number, trip_id: number) {
+  return axios
+    .put(`http://localhost:3000/userbooked/${id}`, {
+      trip_booked: trip_id,
+    })
+    .then((response) => response.data);
+}

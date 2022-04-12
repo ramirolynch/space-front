@@ -9,6 +9,7 @@ export interface SpaceContextModel {
   first_name: string;
   last_name: string;
   selected_trip: number;
+  user_id: number;
   preferred_trips: Trip[];
   location_choice: string;
   suit_choice: string;
@@ -18,6 +19,7 @@ export interface SpaceContextModel {
   addUser: (user: User) => void;
   addFirstName: (first_name: string) => void;
   addLastName: (last_name: string) => void;
+  addUserId: (userid: number) => void;
   addTrip: (trip: Trip) => void;
   addSelectedTrip: (id: number) => void;
   addPreferredTrips: (trips: Trip[]) => void;
@@ -35,6 +37,7 @@ const defaultValue: SpaceContextModel = {
   first_name: "",
   last_name: "",
   selected_trip: 0,
+  user_id: 0,
   preferred_trips: [],
   location_choice: "",
   transport_choice: "",
@@ -44,6 +47,7 @@ const defaultValue: SpaceContextModel = {
   addUser: () => {},
   addFirstName: () => {},
   addLastName: () => {},
+  addUserId: () => {},
   addTrip: () => {},
   addSelectedTrip: () => {},
   addPreferredTrips: () => {},

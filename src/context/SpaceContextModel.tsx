@@ -94,6 +94,12 @@ export function SpaceContextProvider({ children }: Props) {
     setLastName(last_name);
   }
 
+  const [user_id, setUserId] = useState<number>(0);
+
+  function addUserId(userid: number) {
+    setUserId(userid);
+  }
+
   return (
     <SpaceContext.Provider
       value={{
@@ -119,7 +125,9 @@ export function SpaceContextProvider({ children }: Props) {
         last_name,
         first_name,
         addFirstName,
-        addLastName
+        addLastName,
+        user_id,
+        addUserId
       }}
     >
       {children}
