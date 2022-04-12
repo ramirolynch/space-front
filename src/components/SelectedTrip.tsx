@@ -3,13 +3,14 @@ import moment from "moment";
 import { IconContext } from "react-icons";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { bookTrip, fetchTrip } from "../services/SpaceTravelApi";
+import { bookTrip, fetchTrip, fetchVaccines, userVaccineCompliant } from "../services/SpaceTravelApi";
 import { SpaceContext } from "../context/SpaceContext";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaSignOutAlt, FaPrint } from "react-icons/fa";
 import jsPDF from "jspdf";
 import { IMAGE_BASE64 } from "../constants/ImageHelper";
+import { VaccineFace } from "../models/VaccineModel";
 
 export function SelectedTrip() {
   const {
@@ -23,6 +24,9 @@ export function SelectedTrip() {
   } = useContext(SpaceContext);
 
   const [mytrip, setMyTrip] = useState<Trip>();
+  const [vaccinesarr, setVaccineArr] = useState<VaccineFace[]>([]);
+  const [vaccinecompliant, setVaccineCompliant] = useState<boolean>();
+  const [vaccineText, setVaccineText] = useState<string>("");
 
   let navigate = useNavigate();
 
@@ -30,6 +34,7 @@ export function SelectedTrip() {
     if (loggedusers === false) {
       navigate("/login");
     }
+    fetchVaccines().then((data) => setVaccineArr(data));
     fetchTrip(selected_trip).then((data) => setMyTrip(data));
   }, []);
 
@@ -69,6 +74,13 @@ export function SelectedTrip() {
     generatePDF(mytrip);
     console.log(user_id, mytrip.id);
     bookTrip(user_id, mytrip.id);
+    const vaccineRequired = vaccinesarr.find(v => v.location_id === mytrip.location_id);
+    
+    setVaccineCompliant(vaccineRequired?.vaccine_name === vaccine_choice ? true : false)
+    if (vaccinecompliant === true) {
+      userVaccineCompliant(user_id);
+    }
+    setVaccineText(vaccinecompliant === true ? `Passenger is immunized against ${vaccineRequired?.vaccine_name}.` : `Passenger must be immunized against ${vaccineRequired?.vaccine_name} before travel`);
   }
 
   function generatePDF(trip: Trip) {
@@ -113,7 +125,7 @@ export function SelectedTrip() {
       180
     );
     doc.text("Space Suit Type :" + "" + trip.space_suit_name + "", 20, 200);
-    doc.text("Vaccine Choice :" + "" + vaccine_choice + "", 20, 220);
+    doc.text(vaccineText, 20, 220);
     doc.save("boardingPass.pdf");
   }
 

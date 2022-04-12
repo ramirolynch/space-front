@@ -21,6 +21,7 @@ export function MarsTrip() {
     location_choice,
     transport_choice,
     vaccine_choice,
+    addVaccineChoice,
     suit_choice,
     logoutUser,
   } = useContext(SpaceContext);
@@ -38,7 +39,8 @@ export function MarsTrip() {
 
   function handleClick(e: any) {
     e.preventDefault();
-    console.log(transport_choice, suit_choice, location_choice);
+    addVaccineChoice(vaccinePick);
+    console.log(transport_choice, suit_choice, location_choice,vaccine_choice);
     fetchSearch(transport_choice, suit_choice, location_choice).then((data) =>
       addPreferredTrips(data)
     );
