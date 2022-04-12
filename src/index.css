@@ -26,7 +26,9 @@ code {
 }
 
 .goMars {
-  margin: 0;
+  margin: 5px;
+  font-size: 3.5rem;
+  font-family: 900;
 }
 
 .logout {
@@ -136,8 +138,7 @@ button.bookTrip:hover {
   font-size: 1rem;
 }
 
-.departure,
-.arrival {
+.departure {
   display: flex;
   align-items: center;
   margin-left: 15px;
@@ -145,10 +146,22 @@ button.bookTrip:hover {
   border: 1px solid black;
 }
 
-.departureText,
+.arrival {
+  display: flex;
+  align-items: center;
+  margin-left: 55px;
+  background-color: rgb(248, 201, 114);
+  border: 1px solid black;
+}
+
+.departureText {
+  color: rgb(113, 0, 62);
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
 .arrivalText {
   color: rgb(113, 0, 62);
-  text-decoration: underline;
   font-weight: 600;
   font-size: 1.5rem;
 }
@@ -227,11 +240,13 @@ li {
 }
 
 .noTrips {
-  background-color: rgba(255, 255, 255, 0.7);
-  padding: 20px;
-  border-radius: 1em;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 15px;
+  border-radius: 10px;
   color: rgb(152, 0, 109);
   font-size: 3rem;
+  border: 2px solid black;
+  margin-top: 50px;
 }
 
 .noTrips:hover {
