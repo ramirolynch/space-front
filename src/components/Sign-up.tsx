@@ -3,12 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import "../LogInSignUp.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { signUp } from "../services/SpaceTravelApi";
+import { logIn, signUp } from "../services/SpaceTravelApi";
 import { SpaceContext } from "../context/SpaceContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export function SignUp() {
-  const { addUser } = useContext(SpaceContext);
+  const { addUser, loginUser } = useContext(SpaceContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -71,6 +71,7 @@ export function SignUp() {
     } else if (password !== confirmPassword) {
       passwordNoMatchError();
     } else {
+      loginUser();
       let formData = new FormData(e.currentTarget);
       let first_name: string = formData.get("first_name") as string;
       let last_name: string = formData.get("last_name") as string;
@@ -78,7 +79,7 @@ export function SignUp() {
       let password: string = formData.get("password") as string;
       signUp(first_name, last_name, email, password).then((newuser) =>
         addUser(newuser)
-      );
+      )
       setFirstName("");
       setLastName("");
       setEmail("");
@@ -163,3 +164,5 @@ export function SignUp() {
     </div>
   );
 }
+
+
