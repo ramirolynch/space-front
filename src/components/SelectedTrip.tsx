@@ -81,14 +81,16 @@ export function SelectedTrip() {
     let vaxcompliant = vaccineRequired?.vaccine_name === vaccine_choice ? true : false;
 
     console.log("vaxcompliant",vaxcompliant);
-
-    setVaccineCompliant(vaxcompliant)
-
-    console.log("vaccinecompliant",vaccinecompliant)
-
-    if (vaccinecompliant === true) {
-      userVaccineCompliant(user_id);
+    
+    async function setVax() {
+      setVaccineCompliant(vaxcompliant)
+      console.log("vaccinecompliant", vaccinecompliant)
+      console.log("user_id",user_id)
+      if (vaccinecompliant === true) {
+        userVaccineCompliant(user_id);
+      }
     }
+    setVax(); 
     
   }
 

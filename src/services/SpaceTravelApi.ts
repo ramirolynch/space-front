@@ -314,6 +314,6 @@ export function bookTrip(id: number, trip_id: number) {
 
 export function userVaccineCompliant(id: number) {
   return axios
-    .put(`http://localhost:3000/userbooked/${id}`)
+    .put(`http://localhost:3000/uservaccine/${id}`)
     .then((response) => response.data);
 }
