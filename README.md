@@ -7,6 +7,8 @@ We hope you enjoy your trip to Mars!!
 
 ## This project is written in:
 
+Heroku\
+PostgreSQL\
 SQL\
 React\
 TypeScript\
@@ -23,8 +25,8 @@ In the project directory, you can run:
 
 # Contributers
 
-[sudhasew](https://github.com/sudhasew)
-[ramirolynch](https://github.com/ramirolynch)
+[sudhasew](https://github.com/sudhasew)\
+[ramirolynch](https://github.com/ramirolynch)\
 [lavendermoose](https://github.com/lavendermoose)
 
 ## Screenshots
