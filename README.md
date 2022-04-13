@@ -5,7 +5,7 @@ If you wonder what the future for space travel might be like, this app might giv
 We hope you enjoy your trip to Mars!!
 
 
-## This project is written in:
+## This project is written with:
 
 Heroku\
 PostgreSQL\
