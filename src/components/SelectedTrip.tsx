@@ -28,6 +28,7 @@ export function SelectedTrip() {
   const [vaccinesarr, setVaccineArr] = useState<VaccineFace[]>([]);
   const [locationsarr, setLocationsArr] = useState<LocationFace[]>([]);
   const [vaccinecompliant, setVaccineCompliant] = useState<boolean>();
+  const [vaccineText, setVaccineText] = useState<string>('');
 
   let navigate = useNavigate();
 
@@ -78,20 +79,30 @@ export function SelectedTrip() {
     bookTrip(user_id, mytrip.id);
     const mylocation = locationsarr.find(l => l.location_name === mytrip.location_name);
     const vaccineRequired = vaccinesarr.find(v => v.location_id === mylocation?.id);
-    let vaxcompliant = vaccineRequired?.vaccine_name === vaccine_choice ? true : false;
 
-    console.log("vaxcompliant",vaxcompliant);
-    
-    async function setVax() {
-      setVaccineCompliant(vaxcompliant)
-      console.log("vaccinecompliant", vaccinecompliant)
-      console.log("user_id",user_id)
-      if (vaccinecompliant === true) {
-        userVaccineCompliant(user_id);
-      }
+    async function vaxCompliant() {
+      const vaxcompliant = vaccineRequired?.vaccine_name === vaccine_choice ? true : false;
+
+      return vaxcompliant;
     }
-    setVax(); 
     
+    vaxCompliant().then((data) => setVaccineCompliant(data));
+
+    
+    async function setVaxStatus() {
+
+      let promise = new Promise(async () => {
+        if (vaccinecompliant === true) {
+          userVaccineCompliant(user_id);
+        }
+  
+      }) 
+
+    }
+
+    setVaxStatus().then(()=>{setVaccineText(vaccinecompliant ? `Passenger is immunized against ${vaccineRequired?.vaccine_name}` : `Passenger must get vaccine against ${vaccineRequired?.vaccine_name} before travel.`)});
+
+    console.log("vaccineText", vaccineText);    
   }
 
   function generatePDF(trip: Trip) {
@@ -136,7 +147,7 @@ export function SelectedTrip() {
       180
     );
     doc.text("Space Suit Type :" + "" + trip.space_suit_name + "", 20, 200);
-    doc.text("Vaccine Status: " + "" + vaccinecompliant + "", 20, 220);
+    doc.text("Vaccine Status: " + "" + vaccineText + "", 20, 220);
     doc.save("boardingPass.pdf");
   }
 
