@@ -23,9 +23,9 @@ In the project directory, you can run:
 
 # Contributers
 
-sudhasew\
-ramirolynch\
-lavendermoose
+[sudhasew](https://github.com/sudhasew)
+[ramirolynch](https://github.com/ramirolynch)
+[lavendermoose](https://github.com/lavendermoose)
 
 ## Screenshots
 
