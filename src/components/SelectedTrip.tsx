@@ -3,7 +3,13 @@ import moment from "moment";
 import { IconContext } from "react-icons";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { bookTrip, fetchLocations, fetchTrip, fetchVaccines, userVaccineCompliant } from "../services/SpaceTravelApi";
+import {
+  bookTrip,
+  fetchLocations,
+  fetchTrip,
+  fetchVaccines,
+  userVaccineCompliant,
+} from "../services/SpaceTravelApi";
 import { SpaceContext } from "../context/SpaceContext";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -21,14 +27,14 @@ export function SelectedTrip() {
     loggedusers,
     first_name,
     last_name,
-    vaccine_choice
+    vaccine_choice,
   } = useContext(SpaceContext);
 
   const [mytrip, setMyTrip] = useState<Trip>();
   const [vaccinesarr, setVaccineArr] = useState<VaccineFace[]>([]);
   const [locationsarr, setLocationsArr] = useState<LocationFace[]>([]);
   const [vaccinecompliant, setVaccineCompliant] = useState<boolean>();
-  const [vaccineText, setVaccineText] = useState<string>('');
+  const [vaccineText, setVaccineText] = useState<string>("");
 
   let navigate = useNavigate();
 
@@ -77,39 +83,46 @@ export function SelectedTrip() {
     generatePDF(mytrip);
     console.log(user_id, mytrip.id);
     bookTrip(user_id, mytrip.id);
-    const mylocation = locationsarr.find(l => l.location_name === mytrip.location_name);
-    const vaccineRequired = vaccinesarr.find(v => v.location_id === mylocation?.id);
+    const mylocation = locationsarr.find(
+      (l) => l.location_name === mytrip.location_name
+    );
+    const vaccineRequired = vaccinesarr.find(
+      (v) => v.location_id === mylocation?.id
+    );
 
     async function vaxCompliant() {
-      const vaxcompliant = vaccineRequired?.vaccine_name === vaccine_choice ? true : false;
+      const vaxcompliant =
+        vaccineRequired?.vaccine_name === vaccine_choice ? true : false;
 
       return vaxcompliant;
     }
-    
+
     vaxCompliant().then((data) => setVaccineCompliant(data));
 
-    
     async function setVaxStatus() {
-
       let promise = new Promise(async () => {
         if (vaccinecompliant === true) {
           userVaccineCompliant(user_id);
         }
-  
-      }) 
-
+      });
     }
 
-    setVaxStatus().then(()=>{setVaccineText(vaccinecompliant ? `Passenger is immunized against ${vaccineRequired?.vaccine_name}` : `Passenger must get vaccine against ${vaccineRequired?.vaccine_name} before travel.`)});
+    setVaxStatus().then(() => {
+      setVaccineText(
+        vaccinecompliant
+          ? `Passenger is immunized against ${vaccineRequired?.vaccine_name}`
+          : `Passenger must get vaccine against ${vaccineRequired?.vaccine_name} before travel.`
+      );
+    });
 
-    console.log("vaccineText", vaccineText);    
+    console.log("vaccineText", vaccineText);
   }
 
   function generatePDF(trip: Trip) {
     var doc = new jsPDF("l", "px", [250, 500]);
     var imgData = "data:image/jpeg;base64," + IMAGE_BASE64;
     doc.addImage(imgData, "jpeg", 0, 0, 510, 250);
-    doc.setTextColor("white");
+    doc.setTextColor("black");
     doc.addFont("helvetica", "normal", "sans-serif", 700);
     doc.text("BOARDING PASS", 220, 20);
     doc.text(
