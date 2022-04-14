@@ -254,14 +254,6 @@ li {
   background-color: rgba(152, 0, 109, 0.7);
 }
 
-.frame img {
-  width: 350px;
-  border-radius: 10%;
-  border: 10px solid rgba(152, 0, 109, 0.7);
-  position: absolute;
-  right: 25px;
-}
-
 .download {
   cursor: pointer;
   padding: 5px 5px;
@@ -277,18 +269,32 @@ li {
   color: white;
   border: 2px solid white;
 }
-.caption {
+
+.frame img {
+  width: 300px;
+  padding: 5px;
   position: absolute;
-  right: 20px;
-  top: 40%;
-  width: 18%;
-  margin-left: 2%;
-  padding-left: 1em;
-  padding-right: 1em;
-  padding-top: 1em;
+  top: -10%;
+  right: -105%;
+  border-radius: 10px 10px 0 0;
+  border: 10px solid rgba(152, 0, 109, 0.7);
+  border-bottom: none;
+  z-index: 1;
+}
+
+.caption {
   color: white;
-  background-color: rgba(152, 0, 109, 0.3);
-  border-radius: 2em;
+  width: 300px;
+  position: absolute;
+  top: 56%;
+  right: -105%;
+  border-radius: 0 0 10px 10px;
+  border: 10px solid rgba(152, 0, 109, 0.7);
+  border-top: none;
+  padding: 5px;
+  overflow: scroll;
+  height: 200px;
+  font-size: 1.2rem;
 }
 /* .frame > figure {
   left: 700px;
@@ -370,5 +376,10 @@ li {
 
   .frame img {
     width: 200px;
+  }
+
+  .caption {
+    width: 200px;
+    font-size: 1rem;
   }
 }
