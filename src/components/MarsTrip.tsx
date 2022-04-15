@@ -39,7 +39,13 @@ export function MarsTrip() {
 
   function handleClick(e: any) {
     e.preventDefault();
-    console.log("all picks", transport_choice, suit_choice, location_choice,vaccine_choice);
+    console.log(
+      "all picks",
+      transport_choice,
+      suit_choice,
+      location_choice,
+      vaccine_choice
+    );
     fetchSearch(transport_choice, suit_choice, location_choice).then((data) =>
       addPreferredTrips(data)
     );
