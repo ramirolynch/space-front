@@ -4,10 +4,12 @@ import { fetchPhoto } from "../services/SpaceTravelApi";
 export function PhotoOfDay() {
   const [imgSrc, setImgSrc] = useState<string>("");
   const [caption, setCaption] = useState<string>("");
+  const [title, setTitle] = useState<string>("");
 
   useEffect(() => {
     fetchPhoto().then((data) => setImgSrc(data.url));
     fetchPhoto().then((data) => setCaption(data.explanation));
+    fetchPhoto().then((data) => setTitle(data.title));
   }, []);
 
   return (
@@ -23,7 +25,7 @@ export function PhotoOfDay() {
               margin: "7px 0 7px 0",
             }}
           >
-            Caption
+            {title}
           </h2>{" "}
           {caption}
         </figcaption>
