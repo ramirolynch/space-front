@@ -24,7 +24,7 @@ root.render(
     <SpaceContextProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<App />}></Route>
+          <Route path="/" element={<LogIn />}></Route>
           <Route path="/showTrip" element={<TripsBook />}></Route>
           <Route path="/login" element={<LogIn />} />
           <Route path="/signup" element={<SignUp />} />
