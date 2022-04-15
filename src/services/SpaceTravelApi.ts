@@ -8,7 +8,7 @@ export function signUp(
   password: string
 ) {
   return axios
-    .post(`http://localhost:3000/signup`, {
+    .post(`https://space-back.vercel.app/signup`, {
       first_name: first_name,
       last_name: last_name,
       email: email,
@@ -19,7 +19,7 @@ export function signUp(
 
 export function logIn(email: string, password: string) {
   return axios
-    .post(`http://localhost:3000/login`, {
+    .post(`https://space-back.vercel.app/login`, {
       email: email,
       password: password,
     })
@@ -30,7 +30,7 @@ export function logIn(email: string, password: string) {
 
 export function fetchTrips() {
   return axios
-    .get(`http://localhost:3000/trips`, {})
+    .get(`https://space-back.vercel.app/trips`, {})
     .then((response) => response.data);
 }
 
@@ -40,7 +40,7 @@ export function fetchSearch(
   location_name: string
 ) {
   return axios
-    .get(`http://localhost:3000/trips/search`, {
+    .get(`https://space-back.vercel.app/trips/search`, {
       params: {
         company_name: company_name,
         suit_name: suit_name,
@@ -67,7 +67,7 @@ export function fetchAsteroids() {
 // fetch trip by trip id
 export function fetchTrip(id: number) {
   return axios
-    .get(`http://localhost:3000/trips/${id}`, {})
+    .get(`https://space-back.vercel.app/trips/${id}`, {})
     .then((response) => response.data);
 }
 
@@ -79,7 +79,7 @@ export function postTrip(
   transportation_id: number
 ) {
   return axios
-    .post(`http://localhost:3000/trips`, {
+    .post(`https://space-back.vercel.app/trips`, {
       departure_date: departure_date,
       arrival_date: arrival_date,
       trip_time: trip_time,
@@ -91,7 +91,7 @@ export function postTrip(
 
 export function deleteTrip(id: number) {
   return axios
-    .delete(`http://localhost:3000/trips/${id}`)
+    .delete(`https://space-back.vercel.app/trips/${id}`)
     .then((response) => response.data);
 }
 
@@ -104,7 +104,7 @@ export function editTrip(
   transportation_id: number
 ) {
   return axios
-    .put(`http://localhost:3000/trips/${id}`, {
+    .put(`https://space-back.vercel.app/trips/${id}`, {
       departure_date: departure_date,
       arrival_date: arrival_date,
       trip_time: trip_time,
@@ -118,13 +118,13 @@ export function editTrip(
 
 export function fetchLocations() {
   return axios
-    .get(`http://localhost:3000/locations`, {})
+    .get(`https://space-back.vercel.app/locations`, {})
     .then((response) => response.data);
 }
 
 export function fetchLocation(id: number) {
   return axios
-    .get(`http://localhost:3000/locations/${id}`, {})
+    .get(`https://space-back.vercel.app/locations/${id}`, {})
     .then((response) => response.data);
 }
 
@@ -134,7 +134,7 @@ export function postLocation(
   unit_of_measure: string
 ) {
   return axios
-    .post(`http://localhost:3000/locations`, {
+    .post(`https://space-back.vercel.app/locations`, {
       location_name: location_name,
       distance: distance,
       unit_of_measure: unit_of_measure,
@@ -149,7 +149,7 @@ export function editLocation(
   unit_of_measure: string
 ) {
   return axios
-    .put(`http://localhost:3000/locations/${id}`, {
+    .put(`https://space-back.vercel.app/locations/${id}`, {
       location_name: location_name,
       distance: distance,
       unit_of_measure: unit_of_measure,
@@ -159,25 +159,25 @@ export function editLocation(
 
 export function deleteLocation(id: number) {
   return axios
-    .delete(`http://localhost:3000/locations/${id}`)
+    .delete(`https://space-back.vercel.app/locations/${id}`)
     .then((response) => response.data);
 }
 
 export function fetchTransportation() {
   return axios
-    .get(`http://localhost:3000/transportation`, {})
+    .get(`https://space-back.vercel.app/transportation`, {})
     .then((response) => response.data);
 }
 
 export function fetchTransport(id: number) {
   return axios
-    .get(`http://localhost:3000/transportation/${id}`, {})
+    .get(`https://space-back.vercel.app/transportation/${id}`, {})
     .then((response) => response.data);
 }
 
 export function postTransport(company_name: string, price: number) {
   return axios
-    .post(`http://localhost:3000/transportation`, {
+    .post(`https://space-back.vercel.app/transportation`, {
       company_name: company_name,
       price: price,
     })
@@ -186,7 +186,7 @@ export function postTransport(company_name: string, price: number) {
 
 export function editTransport(id: number, company_name: string, price: number) {
   return axios
-    .put(`http://localhost:3000/transportation/${id}`, {
+    .put(`https://space-back.vercel.app/transportation/${id}`, {
       company_name: company_name,
       price: price,
     })
@@ -195,25 +195,25 @@ export function editTransport(id: number, company_name: string, price: number) {
 
 export function deleteTransport(id: number) {
   return axios
-    .delete(`http://localhost:3000/transportation/${id}`)
+    .delete(`https://space-back.vercel.app/transportation/${id}`)
     .then((response) => response.data);
 }
 
 export function fetchVaccines() {
   return axios
-    .get(`http://localhost:3000/vaccines`, {})
+    .get(`https://space-back.vercel.app/vaccines`, {})
     .then((response) => response.data);
 }
 
 export function fetchVaccine(id: number) {
   return axios
-    .get(`http://localhost:3000/vaccines/${id}`, {})
+    .get(`https://space-back.vercel.app/vaccines/${id}`, {})
     .then((response) => response.data);
 }
 
 export function postVaccine(vaccine_name: string, location_id: number) {
   return axios
-    .post(`http://localhost:3000/vaccines`, {
+    .post(`https://space-back.vercel.app/vaccines`, {
       vaccine_name: vaccine_name,
       location_id: location_id,
     })
@@ -226,7 +226,7 @@ export function editVaccine(
   location_id: number
 ) {
   return axios
-    .put(`http://localhost:3000/vaccines/${id}`, {
+    .put(`https://space-back.vercel.app/vaccines/${id}`, {
       vaccine_name: vaccine_name,
       location_id: location_id,
     })
@@ -235,25 +235,25 @@ export function editVaccine(
 
 export function deleteVaccine(id: number) {
   return axios
-    .delete(`http://localhost:3000/vaccines/${id}`)
+    .delete(`https://space-back.vercel.app/vaccines/${id}`)
     .then((response) => response.data);
 }
 
 export function fetchSuits() {
   return axios
-    .get(`http://localhost:3000/suits`, {})
+    .get(`https://space-back.vercel.app/suits`, {})
     .then((response) => response.data);
 }
 
 export function fetchSuit(id: number) {
   return axios
-    .get(`http://localhost:3000/suits/${id}`, {})
+    .get(`https://space-back.vercel.app/suits/${id}`, {})
     .then((response) => response.data);
 }
 
 export function fetchUser(id: number) {
   return axios
-    .get(`http://localhost:3000/users/${id}`, {})
+    .get(`https://space-back.vercel.app/users/${id}`, {})
     .then((response) => response.data);
 }
 
@@ -266,7 +266,7 @@ export function postSuit(
   location_id: number
 ) {
   return axios
-    .post(`http://localhost:3000/suits`, {
+    .post(`https://space-back.vercel.app/suits`, {
       suit_name: suit_name,
       suit_color: suit_color,
       temp_min: temp_min,
@@ -287,7 +287,7 @@ export function editSuit(
   location_id: number
 ) {
   return axios
-    .put(`http://localhost:3000/suits/${id}`, {
+    .put(`https://space-back.vercel.app/suits/${id}`, {
       suit_name: suit_name,
       suit_color: suit_color,
       temp_min: temp_min,
@@ -300,13 +300,13 @@ export function editSuit(
 
 export function deleteSuit(id: number) {
   return axios
-    .delete(`http://localhost:3000/suits/${id}`)
+    .delete(`https://space-back.vercel.app/suits/${id}`)
     .then((response) => response.data);
 }
 
 export function bookTrip(id: number, trip_id: number) {
   return axios
-    .put(`http://localhost:3000/userbooked/${id}`, {
+    .put(`https://space-back.vercel.app/userbooked/${id}`, {
       trip_booked: trip_id,
     })
     .then((response) => response.data);
@@ -314,6 +314,6 @@ export function bookTrip(id: number, trip_id: number) {
 
 export function userVaccineCompliant(id: number) {
   return axios
-    .put(`http://localhost:3000/uservaccine/${id}`)
+    .put(`https://space-back.vercel.app/uservaccine/${id}`)
     .then((response) => response.data);
 }
