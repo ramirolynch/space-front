@@ -7,7 +7,6 @@ import { fetchPhoto, fetchUser, logIn } from "../services/SpaceTravelApi";
 import { SpaceContext } from "../context/SpaceContext";
 import { FaEye, FaEyeSlash, FaLock, FaUser } from "react-icons/fa";
 import { PhotoOfDay } from "./PhotoOfDay";
-import { PhotoCaption } from "./PhotoCaption";
 
 export function LogIn() {
   const [email, setEmail] = useState("");
@@ -71,7 +70,7 @@ export function LogIn() {
 
   return (
     <div className="loginContainer">
-    
+      <PhotoOfDay></PhotoOfDay>
       <form onSubmit={handleSubmit}>
         <h1>Are you Ready to go to Mars!?</h1>
         <label>
