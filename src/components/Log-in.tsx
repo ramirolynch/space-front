@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { Suspense, useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../LogInSignUp.css";
 import { ToastContainer, toast } from "react-toastify";
@@ -70,7 +70,10 @@ export function LogIn() {
 
   return (
     <div className="loginContainer">
+      <Suspense fallback={<h2>Loading Photo of the Day...</h2>}>
       <PhotoOfDay></PhotoOfDay>
+      </Suspense>
+      
       <form onSubmit={handleSubmit}>
         <h1>Are you Ready to go to Mars!?</h1>
         <label>
