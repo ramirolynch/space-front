@@ -13,7 +13,7 @@ import moment from "moment";
 
 export function TripsBook() {
   const [departure, setDeparture] = useState(new Date());
-  let [arrival, setArrival] = useState(new Date());
+  let [arrival, setArrival] = useState(new Date("12-31-2022"));
 
   const [trips, setTrips] = useState<Trip[]>([]);
   let navigate = useNavigate();
@@ -27,17 +27,17 @@ export function TripsBook() {
     }
   }, []);
 
-  const datesError = () =>
-    toast.warn("please select arrival date after departure date!", {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      className: "toastBackground",
-    });
+  // const datesError = () =>
+  //   toast.warn("please select arrival date after departure date!", {
+  //     position: "top-center",
+  //     autoClose: 5000,
+  //     hideProgressBar: false,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true,
+  //     progress: undefined,
+  //     className: "toastBackground",
+  //   });
 
   function handleSubmit(e: any) {
     e.preventDefault();
@@ -45,13 +45,13 @@ export function TripsBook() {
     console.log("arrival date", arrival);
   }
 
-  function verifyArrival(e: any) {
-    if (e !== new Date() && e <= departure) {
-      datesError();
-    } else {
-      setArrival(e);
-    }
-  }
+  // function verifyArrival(e: any) {
+  //   if (e !== new Date() && e <= departure) {
+  //     datesError();
+  //   } else {
+  //     setArrival(e);
+  //   }
+  // }
 
   function backToMarsTripPage() {
     navigate("/getTripDetails");
@@ -111,6 +111,7 @@ export function TripsBook() {
               <DatePicker
                 className="departure"
                 onChange={setDeparture}
+                minDate={new Date()}
                 value={departure}
               />
             </div>
@@ -118,7 +119,8 @@ export function TripsBook() {
               <i className="arrivalText"> Arrival Date </i>
               <DatePicker
                 className="arrival"
-                onChange={verifyArrival}
+                onChange={setArrival}
+                minDate={departure}
                 value={arrival}
               />
             </div>
@@ -131,7 +133,13 @@ export function TripsBook() {
         </form>
         {preferred_trips.length > 0 ? (
           preferred_trips
-            .filter((t) => moment(t.departure_date).format() >= moment(departure).format())
+            .filter(
+              (t) =>
+                moment(t.departure_date).format() >= moment(departure).format()
+            )
+            .filter(
+              (t) => moment(t.arrival_date).format() <= moment(arrival).format()
+            )
             .map((trip, i) => <SingleTrip key={i} trip={trip} />)
         ) : (
           <h1 className="noTrips">
