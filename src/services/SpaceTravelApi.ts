@@ -1,4 +1,5 @@
 import axios from "axios";
+import { NearEarthObject, NeoFace } from "../models/NsoModel";
 const accessToken = process.env.REACT_APP_NASA_ACCESS_TOKEN || "";
 
 export function signUp(
@@ -56,10 +57,10 @@ export function fetchPhoto() {
     .then((response) => response.data);
 }
 
-export function fetchAsteroids() {
+export function fetchAsteroids(start_date: string, end_date: string) {
   return axios
     .get<any>(
-      `https://api.nasa.gov/neo/rest/v1/feed?start_date=2022-03-31&end_date=2022-04-01&api_key=${accessToken}`
+      `https://api.nasa.gov/neo/rest/v1/feed?start_date=${start_date}&end_date=${end_date}&api_key=${accessToken}`
     )
     .then((response) => response.data);
 }

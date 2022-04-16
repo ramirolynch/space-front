@@ -18,6 +18,7 @@ import jsPDF from "jspdf";
 import { IMAGE_BASE64 } from "../constants/ImageHelper";
 import { VaccineFace } from "../models/VaccineModel";
 import { LocationFace } from "../models/LocationModel";
+import { Asteroids } from "./Asteroids";
 
 export function SelectedTrip() {
   const {
@@ -199,6 +200,9 @@ export function SelectedTrip() {
           Print boarding pass <FaPrint />
         </button>
         <ToastContainer />
+        <div>
+          <Asteroids/>
+        </div>
       </div>
     </IconContext.Provider>
   );
