@@ -3,7 +3,7 @@ import { NearEarthObject } from "../models/NsoModel";
 export function Asteroid(props: { elem: any }) {
     
     return (
-        <div>
+        <div className="asteroid">
             <ul>
                 <li>Near Earth Object Name:{props.elem.name}</li>
                 <li>Potentially Hazardous Asteroid:{props.elem.is_potentially_hazardous_asteroid === true ? `Yes` : `No`}</li>

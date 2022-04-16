@@ -2,7 +2,7 @@ import { Trip } from "../models/TripModel";
 import moment from "moment";
 import { IconContext } from "react-icons";
 import { useNavigate } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import { Suspense, useContext, useEffect, useState } from "react";
 import {
   bookTrip,
   fetchLocations,
@@ -200,10 +200,13 @@ export function SelectedTrip() {
           Print boarding pass <FaPrint />
         </button>
         <ToastContainer />
-        <div>
-          <Asteroids/>
-        </div>
+      
+    
       </div>
+      <Suspense fallback={<h2>Loading Near Earth Objects...</h2>}>
+       <Asteroids/>
+      </Suspense>
+      
     </IconContext.Provider>
   );
 }

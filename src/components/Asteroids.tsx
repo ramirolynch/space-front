@@ -16,8 +16,8 @@ export function Asteroids() {
   }, []);
 
   return (
-      <div>
-          <h2>Near Earth Asteroid Information</h2>
+      <div className="asteroids">
+          <h2>Near Earth Asteroid Traffic</h2>
 
           {asteroidTraffic.map((elem, i) => <Asteroid key={i} elem={elem}></Asteroid>)}
 
