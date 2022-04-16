@@ -11,7 +11,6 @@ export function Asteroids() {
 
 
     useEffect(() => {
-    fetchAsteroids(moment().format('YYYY-MM-DD'), moment().format('YYYY-MM-DD')).then((response) => console.log(response.near_earth_objects[today]));
     fetchAsteroids(moment().format('YYYY-MM-DD'), moment().format('YYYY-MM-DD')).then((response) => setAsteroidTraffic(response.near_earth_objects[today]));
       
   }, []);
