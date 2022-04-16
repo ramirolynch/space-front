@@ -274,7 +274,7 @@ li {
   width: 300px;
   padding: 5px;
   position: absolute;
-  top: -10%;
+  top: 5%;
   right: -105%;
   border-radius: 10px 10px 0 0;
   border: 10px solid rgba(152, 0, 109, 0.7);
@@ -286,7 +286,7 @@ li {
   color: white;
   width: 300px;
   position: absolute;
-  top: 56%;
+  top: 52%;
   right: -105%;
   border-radius: 0 0 10px 10px;
   border: 10px solid rgba(152, 0, 109, 0.7);
