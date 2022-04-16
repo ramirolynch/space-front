@@ -81,7 +81,6 @@ export function SelectedTrip() {
 
   function handleClick(mytrip: any) {
     console.log("names", first_name, last_name);
-    generatePDF(mytrip);
     console.log(user_id, mytrip.id);
     bookTrip(user_id, mytrip.id);
     const mylocation = locationsarr.find(
@@ -91,35 +90,46 @@ export function SelectedTrip() {
       (v) => v.location_id === mylocation?.id
     );
 
-    async function vaxCompliant() {
-      const vaxcompliant =
+    function vaxCompliant() {
+      let vaxcompliant =
         vaccineRequired?.vaccine_name === vaccine_choice ? true : false;
-
-      return vaxcompliant;
+      let vaccineInfo = "";
+      if (vaxcompliant) {
+        setVaccineCompliant(true);
+        userVaccineCompliant(user_id);
+        vaccineInfo = `Passenger is immunized against ${vaccineRequired?.vaccine_name}`;
+      } else {
+        setVaccineCompliant(false);
+        vaccineInfo = `Passenger must get vaccine against ${vaccineRequired?.vaccine_name} before travel.`;
+      }
+      setVaccineText(vaccineInfo);
+      return vaccineInfo;
     }
-
-    vaxCompliant().then((data) => setVaccineCompliant(data));
-
-    async function setVaxStatus() {
-      let promise = new Promise(async () => {
-        if (vaccinecompliant === true) {
-          userVaccineCompliant(user_id);
-        }
-      });
-    }
-
-    setVaxStatus().then(() => {
-      setVaccineText(
-        vaccinecompliant
-          ? `Passenger is immunized against ${vaccineRequired?.vaccine_name}`
-          : `Passenger must get vaccine against ${vaccineRequired?.vaccine_name} before travel.`
-      );
-    });
-
-    console.log("vaccineText", vaccineText);
+    let vaccineInfo2 = vaxCompliant();
+    generatePDF(mytrip, vaccineInfo2);
   }
+  //   vaxCompliant().then((data) => setVaccineCompliant(data));
 
-  function generatePDF(trip: Trip) {
+  //   async function setVaxStatus() {
+  //     let promise = new Promise(async () => {
+  //       if (vaccinecompliant === true) {
+  //         userVaccineCompliant(user_id);
+  //       }
+  //     });
+  //   }
+
+  //   setVaxStatus().then(() => {
+  //     setVaccineText(
+  //       vaccinecompliant
+  //         ? `Passenger is immunized against ${vaccineRequired?.vaccine_name}`
+  //         : `Passenger must get vaccine against ${vaccineRequired?.vaccine_name} before travel.`
+  //     );
+  //   });
+
+  //   console.log("vaccineText", vaccineText);
+  // }
+
+  function generatePDF(trip: Trip, vaccinInfo: string) {
     var doc = new jsPDF("l", "px", [250, 500]);
     var imgData = "data:image/jpeg;base64," + IMAGE_BASE64;
     doc.addImage(imgData, "jpeg", 0, 0, 510, 250);
@@ -161,7 +171,9 @@ export function SelectedTrip() {
       180
     );
     doc.text("Space Suit Type :" + "" + trip.space_suit_name + "", 20, 200);
-    doc.text("Vaccine Status: " + "" + vaccineText + "", 20, 220);
+    if (vaccinInfo.length > 0) {
+      doc.text("Vaccine Status: " + "" + vaccinInfo + "", 20, 220);
+    }
     doc.save("boardingPass.pdf");
   }
 
@@ -200,13 +212,10 @@ export function SelectedTrip() {
           Print boarding pass <FaPrint />
         </button>
         <ToastContainer />
-      
-    
       </div>
       <Suspense fallback={<h2>Loading Near Earth Objects...</h2>}>
-       <Asteroids/>
+        <Asteroids />
       </Suspense>
-      
     </IconContext.Provider>
   );
 }
