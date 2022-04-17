@@ -4,7 +4,6 @@ If you wonder what the future for space travel might be like, this app might giv
 
 We hope you enjoy your trip to Mars!!
 
-
 ## This project is written with:
 
 Heroku\
@@ -23,7 +22,7 @@ In the project directory, you can run:
 
 ## `npm start`
 
-# Contributers
+# Contributors
 
 [sudhasew](https://github.com/sudhasew)\
 [ramirolynch](https://github.com/ramirolynch)\
