@@ -108,27 +108,7 @@ export function SelectedTrip() {
     let vaccineInfo2 = vaxCompliant();
     generatePDF(mytrip, vaccineInfo2);
   }
-  //   vaxCompliant().then((data) => setVaccineCompliant(data));
-
-  //   async function setVaxStatus() {
-  //     let promise = new Promise(async () => {
-  //       if (vaccinecompliant === true) {
-  //         userVaccineCompliant(user_id);
-  //       }
-  //     });
-  //   }
-
-  //   setVaxStatus().then(() => {
-  //     setVaccineText(
-  //       vaccinecompliant
-  //         ? `Passenger is immunized against ${vaccineRequired?.vaccine_name}`
-  //         : `Passenger must get vaccine against ${vaccineRequired?.vaccine_name} before travel.`
-  //     );
-  //   });
-
-  //   console.log("vaccineText", vaccineText);
-  // }
-
+ 
   function generatePDF(trip: Trip, vaccinInfo: string) {
     var doc = new jsPDF("l", "px", [250, 500]);
     var imgData = "data:image/jpeg;base64," + IMAGE_BASE64;
